@@ -1,5 +1,5 @@
 languageCode = 'en-us'
-title = 'Zack's dev site'
+title = "Zack's dev site"
 
 theme = "hugo-coder"
 defaultcontentlanguage = "en"
