@@ -19,7 +19,7 @@ style = "github-dark"
   info = "Homelab Enthusiast"
   description = "Zack's dev site"
   keywords = "blog,developer,personal"
-  avatarurl = "images/avatar.jpg"
+  avatarurl = "images/avatar.png"
   #gravatar = "john.doe@example.com"
 
   faviconSVG = "/img/favicon.svg"
