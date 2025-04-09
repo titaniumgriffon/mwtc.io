@@ -1,5 +1,5 @@
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Zack's dev site'
 
 theme = "hugo-coder"
 defaultcontentlanguage = "en"
