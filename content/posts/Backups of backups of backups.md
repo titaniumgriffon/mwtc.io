@@ -1,3 +1,12 @@
++++
+draft = true
+date = {{date}}
+title: 'Backups of backups of backups'
+slug: "Backups-of-backups-of-backups"
+authors = ["Zack Lewis"]
+comments: false
++++
+
 They (the all knowing vendors who want to sell you more hardware for storage, software for backups, etc) always say you should follow the 3-2-1 rule for backups. I've never been good at this. So I set out on a mission. I wanted a backup system that was easy to deploy to my new servers and worked without a bunch of manual intervention.  I built a simple web server that houses 2 scripts. Install and run-backups. The install script will install the required components like wget, restic, autofs, etc. And it would configure these to create a mount point on my Unraid server in a backups directory with the hostname as the final folder. It would create a healthcheck.io type check on my selfhosted version of healthcheck. It would then pull down the run-backup script and create a cron job to run nightly using restic. If the job fails, it pings my ntfy server. If it doesn't run, healthchecks pings me after 24 hours. This all works well. I can even install the entire system with a simple command:
 ```
 curl http://backups.lab/install.sh | bash
