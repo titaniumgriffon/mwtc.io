@@ -1,6 +1,6 @@
 +++
 draft = true
-date = {{date}}
+date = 2025-02-08T1:39:00
 title: 'Backups of backups of backups'
 slug: "Backups-of-backups-of-backups"
 authors = ["Zack Lewis"]
