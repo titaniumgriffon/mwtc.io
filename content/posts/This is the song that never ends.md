@@ -1,8 +1,7 @@
 +++
 draft = false
 date = 2024-11-30T00:21:00Z
-title = 'This is the song that never ends.md'
-slug = "This-is-the-song-that-never-ends.md"
+title = 'This is the song that never ends'
 authors = ["Zack Lewis"]
 disableComments = true
 +++
