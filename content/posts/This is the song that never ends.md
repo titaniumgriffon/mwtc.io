@@ -1,3 +1,13 @@
++++
+draft = false
+date = 2024-11-30T00:21:00Z
+title = 'This is the song that never ends.md'
+slug = "This-is-the-song-that-never-ends.md"
+authors = ["Zack Lewis"]
+comments = false
++++
+
+
 Cuz here we go again, starting a new blog. This is less about the blog itself and more about trying new stuff. 
 
 I saw the idea of using Obsidian as a notes editor and publishing it with Hugo via GitHub to a site for semi automated posts. We will see how that goes.
