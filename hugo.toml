@@ -1,5 +1,5 @@
 languageCode = 'en-us'
-title = "Zack's dev site"
+title = "Mid West Tech Conference"
 
 theme = "hugo-coder"
 defaultcontentlanguage = "en"
@@ -7,54 +7,26 @@ defaultcontentlanguage = "en"
 [pagination]
 pagerSize = 20
 
-[services]
-[services.disqus]
-shortname = "Zack"
-
 [markup.highlight]
 style = "github-dark"
 
 [params]
-  author = "Zack Lewis"
-  info = "Homelab Enthusiast"
-  description = "Zack's dev site"
-  keywords = "blog,developer,personal"
-  avatarurl = "images/avatar.png"
-  #gravatar = "john.doe@example.com"
-
   faviconSVG = "/img/favicon.svg"
   favicon_32 = "/img/favicon-32x32.png"
   favicon_16 = "/img/favicon-16x16.png"
 
-  since = 2007
+  since = 2025
 
   enableTwemoji = true
 
   colorScheme = "auto"
   hidecolorschemetoggle = false
 
-  # customCSS = ["css/custom.css"]
-  # customSCSS = ["scss/custom.scss"]
-  # customJS = ["js/custom.js"]
-
 [taxonomies]
   category = "categories"
   series = "series"
   tag = "tags"
   author = "authors"
-
-# Social links
-[[params.social]]
-  name = "Github"
-  icon = "fa-brands fa-github fa-2x"
-  weight = 1
-  url = "https://github.com/lima3w/"
-[[params.social]]
-  name = "Github"
-  icon = "fa-brands fa-github fa-2x"
-  weight = 1
-  url = "https://github.com/zack-lewis"
-
 
 # Menu links
 [[menu.main]]
