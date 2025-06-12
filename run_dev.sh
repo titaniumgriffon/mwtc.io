@@ -1,4 +1,5 @@
-IP_ADDR=$(/sbin/ip addr show ens160 | awk -F"[ /]+" '/inet / {print $3}')
-#echo $IP_ADDR
+# Linux
+/usr/local/bin/hugo serve -D --bind 0.0.0.0 --port 80 --disableFastRender --noHTTPCache
 
-/usr/local/bin/hugo serve -D --bind $IP_ADDR --port 80
+# Windows
+hugo serve -D --bind 0.0.0.0 --port 80 --disableFastRender --noHTTPCache 
