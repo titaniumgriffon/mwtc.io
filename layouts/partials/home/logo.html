@@ -1,0 +1,6 @@
+{{ if and (isset .Site.Params "logo") }}
+  {{ with .Site.Params.logo }}
+    <div class="logo" ><img src="{{ . | relURL }}" alt="MWTC Logo"></div>
+  {{ end }}
+{{ end }}
+

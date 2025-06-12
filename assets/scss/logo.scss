@@ -1,0 +1,9 @@
+.logo img {
+  width: 30rem;
+  height: auto;
+  border-radius: 10%;
+
+  @media only screen and (max-width: 768px) {
+    width: 17rem;
+  }
+}

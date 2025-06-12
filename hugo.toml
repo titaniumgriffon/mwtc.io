@@ -1,5 +1,5 @@
 languageCode = 'en-us'
-title = "Mid West Tech Conference"
+title = "Midwest Tech Conference"
 
 theme = "hugo-coder"
 defaultcontentlanguage = "en"
@@ -11,16 +11,36 @@ pagerSize = 20
 style = "github-dark"
 
 [params]
-  faviconSVG = "/img/favicon.svg"
-  favicon_32 = "/img/favicon-32x32.png"
-  favicon_16 = "/img/favicon-16x16.png"
+  mainTitle = "MWTC"
+  subtitle = "Midwest Tech Conference"
+  eventDate = "November 8th, 2025"
+  eventTime = "8am to 5pm"
+  eventLocation = "Westminster College, Fulton, MO"
+  description = "Description goes here"
+  keywords = "MWTC, Midwest, Tech, Conference, Technical"
+  logo = "images/MWTC_dark.png"
+  faviconSVG = "/images/favicon.svg"
+  favicon_32 = "/images/favicon-32x32.png"
+  favicon_16 = "/images/favicon-16x16.png"
 
   since = 2025
-
   enableTwemoji = true
-
   colorScheme = "auto"
   hidecolorschemetoggle = false
+
+  customSCSS = ['scss/logo.scss']
+
+[[params.links]]
+  name = "Westminster College, Champ Auditorium"
+  icon = "fa fa-2x fa-map-marker"
+  weight = 1
+  url = "https://maps.app.goo.gl/2GBPMJxK4S7DCVs39"
+
+#[[params.links]]
+#  name = "Call for Papers"
+#  icon = "fa fa-2x fa-commenting"
+#  weight = 2
+#  url = "https://sessionize.com/mwtc"
 
 [taxonomies]
   category = "categories"
@@ -30,10 +50,11 @@ style = "github-dark"
 
 # Menu links
 [[menu.main]]
-  name = "Blog"
+  name = "Call for Papers"
   weight = 1
-  url  = "posts/"
+  url = "https://sessionize.com/mwtc"
+  target = "_blank"
 [[menu.main]]
   name = "About"
   weight = 2
-  url = "about/"
+  url = "about"
