@@ -16,7 +16,7 @@ style = "github-dark"
   eventDate = "November 8th, 2025"
   eventTime = "8am to 5pm"
   eventLocation = "Westminster College, Fulton, MO"
-  description = "Description goes here"
+  description = "A tech conference for the people"
   keywords = "MWTC, Midwest, Tech, Conference, Technical"
   logo = "images/MWTC_dark.png"
   faviconSVG = "/images/favicon.svg"
@@ -58,3 +58,7 @@ style = "github-dark"
   name = "About"
   weight = 2
   url = "about"
+[[menu.main]]
+  name = "FAQ"
+  weight = 3
+  url = "faq"
