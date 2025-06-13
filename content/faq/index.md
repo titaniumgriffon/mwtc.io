@@ -15,5 +15,5 @@ How much does it cost?
 : Free
 
 How can it be free? 
-: Sponsors contribute funds to allow us to do this. The funds will be used to pay for any expenses incurred for the conference and any remaining funds will be either returned to the sponsor, or donated to an appropriate non-profit organization. 
+: Sponsors! They contribute funds to allow us to do this. The funds will be used to pay for any expenses incurred for the conference and any remaining funds will be either returned to the sponsor, or donated to an appropriate non-profit organization. 
 
