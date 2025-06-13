@@ -55,10 +55,14 @@ style = "github-dark"
   url = "https://sessionize.com/mwtc"
   target = "_blank"
 [[menu.main]]
-  name = "About"
+  name = "Sponsors"
   weight = 2
+  url = "sponsors"
+[[menu.main]]
+  name = "About"
+  weight = 50
   url = "about"
 [[menu.main]]
   name = "FAQ"
-  weight = 3
+  weight = 99
   url = "faq"
