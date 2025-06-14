@@ -50,13 +50,18 @@ style = "github-dark"
 
 # Menu links
 [[menu.main]]
-  name = "Call for Papers"
+  name = "Register now!"
   weight = 1
+  url = "https://www.eventbrite.com/e/midwest-tech-conference-2025-tickets-1405626569909"
+  target = "_blank"
+[[menu.main]]
+  name = "Call for Papers"
+  weight = 2
   url = "https://sessionize.com/mwtc"
   target = "_blank"
 [[menu.main]]
   name = "Sponsors"
-  weight = 2
+  weight = 20
   url = "sponsors"
 [[menu.main]]
   name = "About"
