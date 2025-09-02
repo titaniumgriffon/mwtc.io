@@ -55,10 +55,9 @@ style = "github-dark"
   url = "https://www.eventbrite.com/e/midwest-tech-conference-2025-tickets-1405626569909"
   target = "_blank"
 [[menu.main]]
-  name = "Call for Papers"
+  name = "Schedule"
   weight = 2
-  url = "https://sessionize.com/mwtc"
-  target = "_blank"
+  url = "schedule"
 [[menu.main]]
   name = "Sponsors"
   weight = 20
