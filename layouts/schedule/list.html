@@ -8,91 +8,172 @@
 
 <section class="schedule-list">
   <h1 class="schedule-title">Conference Schedule</h1>
-  
+
   <div class="schedule-container">
     {{ range sort $sessions "startsAt" }}
-    <div class="schedule-card">
+    <a class="schedule-card" href="{{ "/schedule/" | relURL }}{{ .id }}">
       <div class="schedule-time">{{ (time .startsAt).Format "3:04 PM" }}</div>
-      <h2 class="schedule-session-title">
-        <a href="{{ "/schedule/" | relURL }}{{ .id }}">{{ .title }}</a>
-      </h2>
-      
+      <h2 class="schedule-session-title">{{ .title }}</h2>
+
       {{ if .speakers }}
-      <p class="schedule-speakers">
-        {{ range $i, $speakerID := .speakers }}
-          {{ if $i }}, {{ end }}
-          {{ $speaker := index (where $speakers "id" $speakerID) 0 }}
-          {{ if $speaker }}{{ $speaker.fullName }}{{ end }}
+      <div class="schedule-speakers">
+        {{ range .speakers }}
+          {{ $speaker := index (where $speakers "id" .) 0 }}
+          {{ if $speaker }}
+            <div class="speaker-inline">
+              {{ if $speaker.profilePicture }}
+                <img src="{{ $speaker.profilePicture }}" alt="{{ $speaker.fullName }}" class="speaker-photo">
+              {{ else }}
+                {{ $nameParts := split $speaker.fullName " " }}
+                {{ $firstInitial := substr (index $nameParts 0) 0 1 }}
+                {{ $lastInitial := "" }}
+                {{ if gt (len $nameParts) 1 }}
+                  {{ $lastInitial = substr (index $nameParts (sub (len $nameParts) 1)) 0 1 }}
+                {{ end }}
+                <div class="speaker-initials">{{ printf "%s%s" $firstInitial $lastInitial }}</div>
+              {{ end }}
+              <span class="speaker-name">{{ $speaker.fullName }}</span>
+            </div>
+          {{ end }}
         {{ end }}
-      </p>
+      </div>
       {{ end }}
-    </div>
+    </a>
     {{ end }}
   </div>
 </section>
 
 <style>
-/* Dark mode color scheme */
-.schedule-list {
-  max-width: 1200px;
-  margin: 2rem auto;
-  text-align: center;
-  padding: 1rem;
+body {
+  background: #121212;
   color: #e0e0e0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.schedule-list {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
 .schedule-title {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 2rem;
   color: #ffffff;
 }
 
 .schedule-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .schedule-card {
-  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center all content */
+  text-align: center;  /* center text */
+  text-decoration: none !important; /* remove underlines */
+  color: inherit;
+  background: #1e1e1e;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.8);
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(77,171,247,0.05), rgba(77,171,247,0));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 10px;
 }
 
 .schedule-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.02);
   background: #2a2a2a;
+  box-shadow: 0 8px 20px rgba(77,171,247,0.4);
+}
+
+.schedule-card:hover::after {
+  opacity: 1;
 }
 
 .schedule-time {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: bold;
-  color: #4dabf7; /* blue accent */
+  color: #4dabf7;
+  margin-bottom: 0.5rem;
+  text-decoration: none !important;
 }
 
 .schedule-session-title {
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
-}
-
-.schedule-session-title a {
-  text-decoration: none;
+  font-size: 1.6rem;
+  margin: 0.5rem 0 1rem;
   color: #ffffff;
+  text-decoration: none !important;
 }
 
-.schedule-session-title a:hover {
-  color: #4dabf7;
+.schedule-session-title:hover {
+  text-decoration: none !important;
 }
 
 .schedule-speakers {
-  font-size: 1.8rem;
-  color: #cccccc;
-  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* center badges */
+  gap: 0.8rem;
+}
+
+.speaker-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #2a2a2a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.25s;
+}
+
+.speaker-inline:hover {
+  background: #4dabf7;
+  color: #121212;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(77,171,247,0.6);
+}
+
+.speaker-photo, .speaker-initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.speaker-initials {
+  background: #4dabf7;
+  color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.speaker-name {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.speaker-name:hover {
+  text-decoration: none !important;
 }
 </style>
-
 
 {{ end }}
