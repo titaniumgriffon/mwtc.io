@@ -1,0 +1,98 @@
+{{ define "title" }}
+  {{ title (i18n (lower .Title)) | default .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+
+{{ $sessions := site.Data.sessions.sessions }}
+{{ $speakers := site.Data.sessions.speakers }}
+
+<section class="schedule-list">
+  <h1 class="schedule-title">Conference Schedule</h1>
+  
+  <div class="schedule-container">
+    {{ range sort $sessions "startsAt" }}
+    <div class="schedule-card">
+      <div class="schedule-time">{{ (time .startsAt).Format "3:04 PM" }}</div>
+      <h2 class="schedule-session-title">
+        <a href="{{ "/schedule/" | relURL }}{{ .id }}">{{ .title }}</a>
+      </h2>
+      
+      {{ if .speakers }}
+      <p class="schedule-speakers">
+        {{ range $i, $speakerID := .speakers }}
+          {{ if $i }}, {{ end }}
+          {{ $speaker := index (where $speakers "id" $speakerID) 0 }}
+          {{ if $speaker }}{{ $speaker.fullName }}{{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<style>
+/* Dark mode color scheme */
+.schedule-list {
+  max-width: 1200px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 1rem;
+  color: #e0e0e0;
+}
+
+.schedule-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.schedule-card {
+  background: #181818;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.schedule-card:hover {
+  transform: translateY(-3px);
+  background: #2a2a2a;
+}
+
+.schedule-time {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4dabf7; /* blue accent */
+}
+
+.schedule-session-title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.schedule-session-title a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.schedule-session-title a:hover {
+  color: #4dabf7;
+}
+
+.schedule-speakers {
+  font-size: 1.8rem;
+  color: #cccccc;
+  margin-top: 0.5rem;
+}
+</style>
+
+
+{{ end }}

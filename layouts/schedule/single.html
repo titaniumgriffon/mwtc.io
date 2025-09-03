@@ -1,0 +1,129 @@
+{{ define "title" }}
+  {{ title (i18n (lower .Title)) | default .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+
+
+{{ $sessions := site.Data.sessions.sessions }}
+{{ $allSpeakers := site.Data.sessions.speakers }}
+{{ $session := index (where $sessions "id" .File.BaseFileName) 0 }}
+
+{{ if $session }}
+<article class="session-page">
+
+  <div class="session-container">
+
+    <!-- Main content -->
+    <main class="session-main">
+      <header class="session-header">
+        <h1 class="session-title">{{ $session.title }}</h1>
+        {{ if $session.subtitle }}
+          <h2 class="session-subtitle">{{ $session.subtitle }}</h2>
+        {{ end }}
+      </header>
+
+      <section class="session-details">
+        <p><strong>Time:</strong> {{ (time $session.startsAt).Format "3:04 PM" }}</p>
+
+        {{ if $session.room }}
+        <p><strong>Room:</strong> {{ $session.room }}</p>
+        {{ end }}
+
+        {{ if $session.speakers }}
+        <p><strong>Speaker{{ if gt (len $session.speakers) 1 }}s{{ end }}:</strong>
+          {{ range $i, $speakerID := $session.speakers }}
+            {{ if $i }}, {{ end }}
+            {{ $speaker := index (where $allSpeakers "id" $speakerID) 0 }}
+            {{ if $speaker }}
+              {{ $speaker.fullName }}
+            {{ else }}
+              Unknown
+            {{ end }}
+          {{ end }}
+        </p>
+        {{ end }}
+      </section>
+
+      <section class="session-description">
+        {{ if $session.description }}
+          <h3>Description</h3>
+          <div>{{ $session.description | safeHTML }}</div>
+        {{ end }}
+      </section>
+
+      {{ if $session.tags }}
+      <section class="session-tags">
+        <p><strong>Tags:</strong> {{ delimit $session.tags ", " }}</p>
+      </section>
+      {{ end }}
+
+      <footer class="session-footer">
+        <a href="{{ "/schedule/" | relURL }}" class="back-link">← Back to Schedule</a>
+      </footer>
+    </main>
+
+    <!-- Sidebar with speaker photos -->
+    {{ if $session.speakers }}
+    <aside class="session-sidebar">
+      <h3>Speaker{{ if gt (len $session.speakers) 1 }}s{{ end }}</h3>
+      <div class="speaker-photos">
+        {{ range $speakerID := $session.speakers }}
+          {{ $speaker := index (where $allSpeakers "id" $speakerID) 0 }}
+          {{ if $speaker }}
+          {{ $link := index (where $speaker.links "linkType" "Sessionize") 0 }}
+          <div class="speaker-card">
+            <a href="{{ $link.url }}" >
+                <figure><img src="{{ $speaker.profilePicture }}" alt="{{ $speaker.fullName }}" class="speaker-photo">
+                <figcaption>{{ $speaker.fullName }}</figcaption></figure>
+            </a>
+            <p class="speaker-name">{{ $speaker.name }}</p>
+          </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </aside>
+    {{ end }}
+
+  </div>
+
+</article>
+
+<style>
+/* Layout */
+.session-page { max-width: 1200px; margin: 2rem auto; padding: 1rem; }
+.session-container { display: flex; flex-wrap: wrap; gap: 2rem; }
+
+/* Main content */
+.session-main { flex: 2 1 600px; }
+
+/* Sidebar */
+.session-sidebar { flex: 1 1 250px; background: #2e2e2e; padding: 1rem; border-radius: 8px; }
+.session-sidebar h3 { margin-top: 0; text-align: center; }
+.speaker-photos { display: flex; flex-direction: column; gap: 1rem; }
+.speaker-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.speaker-photo { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; }
+.speaker-name { margin-top: 0.5rem; font-weight: bold; }
+
+/* Header & Details */
+.session-header { border-bottom: 1px solid #ccc; margin-bottom: 1rem; padding-bottom: 0.5rem; }
+.session-title { font-size: 2rem; margin: 0; }
+.session-subtitle { font-size: 1.25rem; color: #555; margin: 0.25rem 0 0; }
+.session-details p { margin: 0.25rem 0; }
+.session-description h3 { margin-top: 1rem; }
+.session-footer { margin-top: 2rem; }
+.back-link { text-decoration: none; color: #007acc; }
+.back-link:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .session-container { flex-direction: column; }
+  .session-sidebar { flex: 1 1 100%; }
+}
+</style>
+
+{{ else }}
+<p>Session not found.</p>
+{{ end }}
+
+
+{{ end }}
