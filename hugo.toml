@@ -4,6 +4,9 @@ title = "Midwest Tech Conference"
 theme = "hugo-coder"
 defaultcontentlanguage = "en"
 
+[build]
+hugo_version = "0.149.0"
+
 [pagination]
 pagerSize = 20
 
