@@ -1,0 +1,338 @@
+{
+    "sessions": [
+        {
+            "id": "1025744",
+            "title": "The Growing Crisis in CVE Data Quality",
+            "description": "In cybersecurity, the Common Vulnerabilities and Exposures (CVE) system serves as a critical pillar by providing a standardized method for identifying and cataloging vulnerabilities. However, this foundational system is now facing a burgeoning crisis in data quality, which threatens the efficacy of global cybersecurity efforts. This talk delves into the heart of the issue, exploring how the exponential growth in CVE assignments, coupled with the National Vulnerability Database's (NVD) slowdown in processing and analysis, has led to a significant degradation in CVE data quality.\r\n\r\nWe'll begin by examining the root causes of this crisis, including the overwhelming increase in vulnerability disclosures and the inclusion of less critical issues by new CVE Numbering Authorities (CNAs.\r\n\r\nThe discussion will then pivot to the implications of this decline in data quality. With inaccurate, outdated, or cluttered CVE entries, security teams struggle to discern actionable intelligence from noise. This not only hampers effective vulnerability management but also misguides prioritization, potentially leaving organizations exposed to exploits.\r\n\r\nThe talk will also propose potential solutions and reforms necessary to restore the integrity and utility of the CVE system. This includes advocating for stricter criteria for CVE assignments, enhancing the automation of vulnerability assessments, and fostering better collaboration between CNAs, the CVE program, and cybersecurity communities.",
+            "startsAt": "2025-11-08T08:00:00",
+            "endsAt": "2025-11-08T08:45:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": ["a5d70130-9a29-4acb-8ff9-0df9ba5a7563"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": false
+        },
+        {
+            "id": "956801",
+            "title": "WiFi 7 and Security",
+            "description": "Explore the next generation of wireless security and features of WiFi 7, including MLO and preamble puncturing, WPA3/OWE, and 4096 QAM.",
+            "startsAt": "2025-11-08T09:00:00",
+            "endsAt": "2025-11-08T09:45:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["147a39db-c106-474f-ac70-42f184e7e250"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": false
+        },
+        {
+            "id": "981616",
+            "title": "Training the Human Firewall: You're joking right?",
+            "description": "Have you ever watched someone do their cybersecurity awareness training? I have. The window is minimized to the farthest corner of the screen, the headphones are on, and normal job tasks are being performed during “training.” The quiz at the end of the training is retaken over and over till a passing score is reached.\r\n\r\nThe sales technique of “Training the human firewall” is a phrase that makes you think that the automated service you’re buying is suddenly going to engage every end user on every level. It’s not. As someone who has worked on incident response teams, I’ve seen firsthand how automated cybersecurity awareness training platforms are failing organizations left and right. Bill in Marketing clicked on a link and entered his credentials. Sally from Accounting opened a malicious audio file that installed a malicious agent that utilizes Live Off the Land Binaries (LOL Bins). Ad Infinitum!\r\n\r\nRe-engaging users on their level and in person is how we make a difference. A user cannot ask a video questions, and they are asking questions. However, by the time they can ask, they’re on the phone with a SOC Analyst having their computer triaged for an incident.\r\n",
+            "startsAt": "2025-11-08T10:15:00",
+            "endsAt": "2025-11-08T11:00:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["718a77ec-c9f6-48a6-8147-c540238c0031"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": true
+        },
+        {
+            "id": "960513",
+            "title": "Monitoring your network with Zabbix",
+            "description": "I'll show the basic steps to get Zabbix up and running in your environment. How to add hosts, setup triggers and alerts and create custom dashboards.",
+            "startsAt": "2025-11-08T11:05:00",
+            "endsAt": "2025-11-08T11:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["82a46b4d-e814-42a2-b49b-04c958dfd821"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": true
+        },
+        {
+            "id": "1016390",
+            "title": "Close Encounters of the Data Kind: Exploring UFO Sightings with MongoDB and NextJS",
+            "description": "Have you ever rewatched a shaky video over and over trying to tell if something was a UFO? Me too, but what if I told you there's a data driven way to get to the bottom of it all? In this session we will cover the process of storing UFO sightings in MongoDB, building a sleek and interactive user interface with NextJS, and deploying the app to the cloud. Discover how these technologies make UFO data easily accessible and analyzable, enhancing our understanding of close encounters.",
+            "startsAt": "2025-11-08T13:00:00",
+            "endsAt": "2025-11-08T13:45:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["730a789f-e2a8-483d-91bc-6e794f1b44d5"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": true
+        },
+        {
+            "id": "976426",
+            "title": "Homelab - Getting Started",
+            "description": "Let's have a discussion about getting a lab environment set up. This could be at home or office, depending on your needs. ",
+            "startsAt": "2025-11-08T13:50:00",
+            "endsAt": "2025-11-08T14:35:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["a4c8d6a3-477e-470f-a268-146d5d0ff92d"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": true
+        },
+        {
+            "id": "997257",
+            "title": "Cybersecurity in the Age of AI: How to Protect Your Business from Rising Threats",
+            "description": "As artificial intelligence (AI) transforms industries and revolutionizes the way we live and work, it also introduces new and unprecedented cybersecurity risks. In this talk, we'll delve into the intersection of AI and cybersecurity, exploring the emerging threats and opportunities that arise when these two powerful technologies collide.\r\n",
+            "startsAt": "2025-11-08T15:05:00",
+            "endsAt": "2025-11-08T15:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["e8fa9638-e414-4f10-8d0a-0cb26c8baeb9"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": true
+        },
+        {
+            "id": "1017234",
+            "title": "Help Your Teams Avoid Burnout And Apathy",
+            "description": "We work in a fast paced, constantly growing, high demand industry that is known for creating burnout and apathy for teams who constantly live under this emotional pressure. Tropes like “people quit managers not jobs” aren’t enough to guide us to real solutions. Over the last 13 years I’ve helped growing a company from 40 employees to 1,500 employees and regular winner of Best Places to Work awards. To avoid the pitfalls we must balance two critical areas, engaging minds and engaging hearts. Come learn how to use Autonomy, Mastery, and Achievement to engage minds, and balance that with Purpose and Appreciation to engage hearts.",
+            "startsAt": "2025-11-08T15:55:00",
+            "endsAt": "2025-11-08T16:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": ["d101b2c4-cdb8-4c5e-9c56-86e045b0b2d0"],
+            "categoryItems": [],
+            "questionAnswers": [],
+            "roomId": 68277,
+            "liveUrl": null,
+            "recordingUrl": null,
+            "status": "Accepted",
+            "isInformed": true,
+            "isConfirmed": false
+        }
+    ],
+    "speakers": [
+        {
+            "id": "e8fa9638-e414-4f10-8d0a-0cb26c8baeb9",
+            "firstName": "",
+            "lastName": "",
+            "bio": "Burton Kelso is the Chief Tech Expert at Integral a computer repair and IT support company.  He is also a 2X TEDx Keynote Speaker and expert in Cyber Security, AI, and Social Media Marketing.  ",
+            "tagLine": "I love technology.  I've read all of the manuals and I'm serious about make technology fun safe and easy to use for everyone.",
+            "profilePicture": "https://sessionize.com/image/6350-400o400o1-3sSWxcnivvTg6yb3bZeJFd.png",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/burtonkelso",
+                    "linkType": "LinkedIn"
+                },
+                {
+                    "title": "Sessionize",
+                    "url": "https://sessionize.com/burtonkelso",
+                    "linkType": "Sessionize"
+                }
+            ],
+            "sessions": [997257],
+            "fullName": "Burton Kelso, The Technology Expert",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "147a39db-c106-474f-ac70-42f184e7e250",
+            "firstName": "",
+            "lastName": "",
+            "bio": "Cam has over a decade of experience providing technical leadership for large-scale WLAN\r\ndesign and implementation programs in both military and enterprise environments.",
+            "tagLine": "Sr. Wireless Systems Engineer - Velaspan, Inc.",
+            "profilePicture": "https://sessionize.com/image/1681-400o400o1-TCi6WiCv5U2ku5Bs7LduYs.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/cam-mccarty-664a2075",
+                    "linkType": "LinkedIn"
+                }
+            ],
+            "sessions": [956801],
+            "fullName": "Cam McCarty",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "730a789f-e2a8-483d-91bc-6e794f1b44d5",
+            "firstName": "",
+            "lastName": "",
+            "bio": "Chris DeMars is a Senior Developer Advocate with over 20 years of technical experience. He speaks all over the world on web accessibility, feature flags, A/B testing, and CSS. For his community contributions, he holds awards as a Progress Champion and former Microsoft MVP, Google Developer Expert, Cloudinary Media Developer Expert, and Auth0 Ambassador. When he is not working on making the web great and accessible you can find him fishing, on the paintball field, rating Detroit Style pizza, and looking for UFO's.",
+            "tagLine": "Senior Developer Advocate",
+            "profilePicture": "https://sessionize.com/image/0aff-400o400o1-DZTrRVmXSXXmBCc1HeyCNF.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/chrisdemars/",
+                    "linkType": "LinkedIn"
+                },
+                {
+                    "title": "Sessionize",
+                    "url": "https://sessionize.com/chris-demars",
+                    "linkType": "Sessionize"
+                }
+            ],
+            "sessions": [1016390],
+            "fullName": "Chris",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "82a46b4d-e814-42a2-b49b-04c958dfd821",
+            "firstName": "",
+            "lastName": "",
+            "bio": "I've worked in higher education for around 20 years. I've touched all areas of working in IT but my primary focus now is on the network/security side of things. I've always been open to sharing what I've learned and learning from others.",
+            "tagLine": "Asst. Dir. of Tech Services - Central Methodist University",
+            "profilePicture": null,
+            "isTopSpeaker": false,
+            "links": [],
+            "sessions": [960513],
+            "fullName": "Jason Rinne",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "a5d70130-9a29-4acb-8ff9-0df9ba5a7563",
+            "firstName": "",
+            "lastName": "",
+            "bio": "Researcher. Builder. Hacker. Traveler.",
+            "tagLine": "Researcher. Builder. Hacker. Traveler.",
+            "profilePicture": "https://sessionize.com/image/48cc-400o400o1-aH8Mh2iBCPugsspCnzoLB5.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/jgamblin/",
+                    "linkType": "LinkedIn"
+                },
+                {
+                    "title": "Sessionize",
+                    "url": "https://sessionize.com/jgamblin",
+                    "linkType": "Sessionize"
+                }
+            ],
+            "sessions": [1025744],
+            "fullName": "jgamblin",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "718a77ec-c9f6-48a6-8147-c540238c0031",
+            "firstName": "",
+            "lastName": "",
+            "bio": "I grew up in and around data centers.  My childhood was made up of reel-to-reel magnetic tape, white and green ladder paper, key punch (Hollerith) cards, and mainframe computing.  Thanks, Dad, for all those awesome weekends at work with you!\r\n\r\nI spent 20+ years working in retail, bar/nightclub security, behavioral healthcare, manufacturing, and transportation and logistics.  The common thread, I was the unofficial tech guy who was summoned before the call to the help desk went out.  I then had an opportunity to retrain for a career in an industry where I excel, cybersecurity.\r\n\r\nAll those years of hanging around corporate data centers, being the non-de facto help desk guy, etc, have made me the professional I am today. \r\n\r\nHow many Information Security Officers understand the concepts and demands of customer service, just-in-time manufacturing, lean manufacturing, health care standards, public safety, and physical security?  I do because I’ve worked in those industries in non-technical roles.  \r\n\r\nAs the Founder/CEO of Nighteagle Security LLC, my goal is to make cybersecurity and resilience accessible to everyone.  Particularly, the non-profit organizations and mom-and-pop small businesses.",
+            "tagLine": "Founder/CEO at Nighteagle Security LLC",
+            "profilePicture": "https://sessionize.com/image/3a9b-400o400o1-GWCWedqTeWWfxBfv3L6FFj.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/mark-kaiman-a257053b/",
+                    "linkType": "LinkedIn"
+                }
+            ],
+            "sessions": [981616],
+            "fullName": "Mark Kaiman",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "d101b2c4-cdb8-4c5e-9c56-86e045b0b2d0",
+            "firstName": "",
+            "lastName": "",
+            "bio": "Tim Rayburn is a Vice President of Consulting with Improving Enterprises, a software and project management consulting company in Dallas, TX. He is a passionate advocate of apprenticeship and mentorship in corporate environments. He has been awarded the Microsoft MVP in recognition of his expertise and community leadership 11 times. He is also a conference organizer, an author, and can be found speaking across the nation on agile processes, software design, and career management. He lives in the North Dallas area with his amazing wife Kate and their loyal dogs Dresden and Radagast.",
+            "tagLine": "Vice President of Consulting at Improving",
+            "profilePicture": "https://sessionize.com/image/fd69-400o400o1-nSZeUH9qRx5dW12LNBcUyt.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/trayburn/",
+                    "linkType": "LinkedIn"
+                },
+                {
+                    "title": "Sessionize",
+                    "url": "https://sessionize.com/trayburn",
+                    "linkType": "Sessionize"
+                }
+            ],
+            "sessions": [1017234],
+            "fullName": "TRayburn",
+            "categoryItems": [],
+            "questionAnswers": []
+        },
+        {
+            "id": "a4c8d6a3-477e-470f-a268-146d5d0ff92d",
+            "firstName": "",
+            "lastName": "",
+            "bio": "I am a full time Hypervisor administrator. I enjoy trying new software in my homelab. ",
+            "tagLine": "Homelab Enthusiast",
+            "profilePicture": "https://sessionize.com/image/266a-400o400o1-wt3yLhUxumAdZvsjjkFRLF.jpg",
+            "isTopSpeaker": false,
+            "links": [
+                {
+                    "title": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/lima3",
+                    "linkType": "LinkedIn"
+                },
+                {
+                    "title": "Sessionize",
+                    "url": "https://sessionize.com/lima3",
+                    "linkType": "Sessionize"
+                }
+            ],
+            "sessions": [976426],
+            "fullName": "Zack Lewis",
+            "categoryItems": [],
+            "questionAnswers": []
+        }
+    ],
+    "questions": [],
+    "categories": [],
+    "rooms": [
+        {
+            "id": 68277,
+            "name": "Great Hall",
+            "sort": 0
+        }
+    ]
+}
