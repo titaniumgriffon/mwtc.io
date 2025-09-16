@@ -11,7 +11,8 @@ hugo_version = "0.149.0"
 pagerSize = 20
 
 [markup.highlight]
-style = "github-dark"
+#style = "github-dark"
+style = "monokai"
 
 [params]
   mainTitle = "MWTC"
@@ -31,7 +32,7 @@ style = "github-dark"
   colorScheme = "auto"
   hidecolorschemetoggle = false
 
-  customSCSS = ['scss/logo.scss']
+  customSCSS = ['scss/logo.scss', 'scss/article.scss']
 
 [[params.links]]
   name = "Westminster College, Champ Auditorium"

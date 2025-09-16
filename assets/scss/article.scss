@@ -1,0 +1,162 @@
+/* Hugo Coder Theme - Professional Sponsorship Packages
+ * Designed for nonprofit conference sponsor selection
+ */
+
+.sub-right {
+    position: relative;
+    float: left;
+    width: 400px;
+    max-width: 25%;
+    margin-right: 50px;
+    padding: 2rem;
+    border: 2px solid #3f3f3f;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #292929 0%, #292929 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+.sub-right .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+}
+
+.sub-right .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sub-right .content .item {
+    position: relative;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-background-secondary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.sub-right .content .item .header {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+}
+
+.sub-right .content .item .header::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Tier-specific colors */
+.sub-right .content .item:nth-child(1) .header::before {
+    background: linear-gradient(
+        45deg,
+        #ff1700,
+        #ff1e00
+    ); /* Red gradient for FOUNDER */
+}
+
+.sub-right .content .item:nth-child(2) .header::before {
+    background: linear-gradient(45deg, #ffd700, #daa520); /* Gold for GOLD */
+}
+
+.sub-right .content .item:nth-child(3) .header::before {
+    background: linear-gradient(
+        45deg,
+        #c0c0c0,
+        #a0a0a0
+    ); /* Silver for SILVER */
+}
+
+.sub-right .content .item:nth-child(4) .header::before {
+    background: linear-gradient(
+        45deg,
+        #cd7f32,
+        #8b4513
+    ); /* Bronze for BRONZE */
+}
+
+.sub-right .content .item .description {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-accent);
+    text-align: right;
+}
+
+.sub-right .content .item .description::before {
+    content: "Starting at ";
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* Call to action styling */
+.sub-right .action {
+    content: "";
+    display: block;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .sub-right {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem 0;
+        padding: 1.5rem;
+    }
+
+    .sub-right .title {
+        font-size: 1.5rem;
+    }
+
+    .sub-right .content .item .description {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sub-right {
+        padding: 1rem;
+    }
+
+    .sub-right .title {
+        font-size: 1.3rem;
+    }
+
+    .sub-right .content {
+        gap: 0.75rem;
+    }
+
+    .sub-right .content .item {
+        padding: 1rem;
+    }
+}
