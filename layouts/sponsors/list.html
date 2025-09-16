@@ -1,23 +1,43 @@
-{{ define "title" }}
-  {{ title (i18n (lower .Title)) | default .Title }} · {{ .Site.Title }}
-{{ end }}
-{{ define "content" }}
-  <section class="container list">
+{{ define "title" }} {{ title (i18n (lower .Title)) | default .Title }} · {{
+.Site.Title }} {{ end }} {{ define "content" }}
+<section class="container list">
     <header>
-      <h1 class="title">
-        <a class="title-link" href="{{ .Permalink | safeURL }}">
-          {{ title (i18n (lower .Title)) | default .Title }}
-        </a>
-      </h1>
+        <h1 class="title">
+            <a class="title-link" href="{{ .Permalink | safeURL }}">
+                {{ title (i18n (lower .Title)) | default .Title }}
+            </a>
+        </h1>
     </header>
     {{ .Content }}
     <ul>
-      {{- range .Paginator.Pages -}}
-        {{- .Render "li" -}}
-      {{- end -}}
+        {{- range .Paginator.Pages -}} {{- .Render "li" -}} {{- end -}}
     </ul>
-
-    {{ partial "pagination.html" . }}
-  </section>
-
+</section>
+<section class="sub-right">
+    <div class="title">Sponsor packages</div>
+    <div class="content">
+        <div class="item">
+            <div class="header">FOUNDER</div>
+            <div class="description">$1500</div>
+        </div>
+        <div class="item">
+            <div class="header">GOLD</div>
+            <div class="description">$1000</div>
+        </div>
+        <div class="item">
+            <div class="header">SILVER</div>
+            <div class="description">$750</div>
+        </div>
+        <div class="item">
+            <div class="header">BRONZE</div>
+            <div class="description">$500</div>
+        </div>
+    </div>
+    <div class="action">
+        <a
+            href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20I%20am%20interested%20in%20the%20%5BFounder%2FGold%2FSilver%2FBronze%5D%20tier.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D"
+            >Contact us to discuss your sponsorship package</a
+        >
+    </div>
+</section>
 {{ end }}
