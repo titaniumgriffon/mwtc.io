@@ -2,6 +2,28 @@
  * Designed for nonprofit conference sponsor selection
  */
 
+/* CSS Variables for theme consistency */
+:root {
+    --sub-article-bg: #e2e2e2;
+    --sub-article-border: #bebfc0;
+    --sub-article-text: #495057;
+    --sub-article-heading: #212529;
+    --sub-article-link: #007bff;
+    --sub-article-link-hover: #0056b3;
+    --sub-article-shadow: #949494;
+}
+
+/* Dark mode variables when .inverted class is present on body */
+.colorscheme-dark {
+    --sub-article-bg: #292929;
+    --sub-article-border: #4a5568;
+    --sub-article-text: #e2e8f0;
+    --sub-article-heading: #f7fafc;
+    --sub-article-link: #63b3ed;
+    --sub-article-link-hover: #90cdf4;
+    --sub-article-shadow: #7c7c7c;
+}
+
 .sub-right {
     position: relative;
     float: left;
@@ -9,10 +31,10 @@
     max-width: 25%;
     margin-right: 50px;
     padding: 2rem;
-    border: 2px solid #3f3f3f;
+    border: 2px solid var(--sub-article-border);
     border-radius: 12px;
-    background: linear-gradient(135deg, #292929 0%, #292929 100%);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background-color: var(--sub-article-bg);
+    box-shadow: 0 4px 20px var(--sub-article-shadow);
     font-size: 2rem;
     line-height: 1.5;
 }
@@ -24,8 +46,7 @@
     letter-spacing: 1px;
     text-align: center;
     margin: 0 0 1.5rem 0;
-    color: var(--color-accent);
-    border-bottom: 3px solid var(--color-accent);
+    color: var(--sub-article-text);
     padding-bottom: 0.5rem;
 }
 
@@ -38,11 +59,10 @@
 .sub-right .content .item {
     position: relative;
     padding: 1.25rem;
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--sub-article-border);
     border-radius: 8px;
-    background-color: var(--color-background-secondary);
+    background-color: var(--sub-article-bg);
     transition: all 0.3s ease;
-    cursor: pointer;
     line-height: 1;
 }
 
@@ -52,7 +72,7 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin: 0 0 0.5rem 0;
-    color: var(--color-text);
+    color: var(--sub-article-text);
     display: flex;
     align-items: center;
 }
@@ -99,7 +119,7 @@
     font-size: 1.8rem;
     font-weight: 700;
     margin: 0;
-    color: var(--color-accent);
+    color: var(--sub-article-text);
     text-align: right;
 }
 
@@ -107,18 +127,17 @@
     content: "Starting at ";
     font-size: 1.5rem;
     font-weight: 400;
-    color: var(--color-text-light);
+    color: var(--sub-article-text);
     display: block;
     margin-bottom: 0.25rem;
 }
 
 /* Call to action styling */
 .sub-right .action {
-    content: "";
     display: block;
     text-align: center;
-    background-color: var(--color-accent);
-    color: var(--color-background);
+    background-color: var(--sub-article-bg);
+    color: var(--sub-article-link);
     border-radius: 6px;
     font-weight: 500;
     font-size: 1.5rem;
