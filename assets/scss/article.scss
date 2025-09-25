@@ -137,10 +137,14 @@
     display: block;
     text-align: center;
     background-color: var(--sub-article-bg);
-    color: var(--sub-article-link);
+    color: var(--sub-article-text);
     border-radius: 6px;
     font-weight: 500;
     font-size: 1.5rem;
+}
+
+.sub-right .action .link {
+    color: var(--sub-article-link);
 }
 
 /* Mobile responsive */
