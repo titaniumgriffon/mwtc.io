@@ -7,7 +7,7 @@
 {{ $speakers := site.Data.sessions.speakers }}
 
 <section class="schedule-list">
-  <h1 class="schedule-title">Conference Schedule</h1>
+  <h1 class="title schedule-title">Conference Schedule</h1>
 
   <div class="schedule-container">
     {{ range sort $sessions "startsAt" }}
@@ -44,11 +44,6 @@
 </section>
 
 <style>
-body {
-  background: #121212;
-  color: #e0e0e0;
-  font-family: "Segoe UI", Roboto, sans-serif;
-}
 
 .schedule-list {
   max-width: 1100px;
@@ -60,7 +55,6 @@ body {
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: #ffffff;
 }
 
 .schedule-container {
@@ -76,7 +70,6 @@ body {
   text-align: center;  /* center text */
   text-decoration: none !important; /* remove underlines */
   color: inherit;
-  background: #1e1e1e;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.8);
@@ -89,7 +82,6 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(77,171,247,0.05), rgba(77,171,247,0));
   opacity: 0;
   transition: opacity 0.25s ease;
   border-radius: 10px;
@@ -97,7 +89,6 @@ body {
 
 .schedule-card:hover {
   transform: translateY(-4px) scale(1.02);
-  background: #2a2a2a;
   box-shadow: 0 8px 20px rgba(77,171,247,0.4);
 }
 
@@ -116,7 +107,6 @@ body {
 .schedule-session-title {
   font-size: 1.6rem;
   margin: 0.5rem 0 1rem;
-  color: #ffffff;
   text-decoration: none !important;
 }
 
@@ -135,7 +125,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #2a2a2a;
+  /*background: #2a2a2a;*/
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
   transition: background 0.3s, transform 0.2s, box-shadow 0.25s;
@@ -143,7 +133,7 @@ body {
 
 .speaker-inline:hover {
   background: #4dabf7;
-  color: #121212;
+  /*color: #121212;*/
   transform: scale(1.05);
   box-shadow: 0 2px 8px rgba(77,171,247,0.6);
 }
@@ -157,7 +147,6 @@ body {
 
 .speaker-initials {
   background: #4dabf7;
-  color: #121212;
   display: flex;
   align-items: center;
   justify-content: center;
