@@ -1,10 +1,10 @@
 <section class="container centered">
-  <div class="about">
-    {{ partialCached "home/logo.html" . }}
-
-    {{ partialCached "home/title.html" . }}
-
-    {{ partialCached "home/links.html" . }}
-  </div>
-
+    <div class="about">
+        {{ partialCached "home/logo.html" . }} {{ partialCached
+        "home/title.html" . }} {{ partialCached "home/links.html" . }}
+    </div>
 </section>
+<div class="frontpage-logo-container" style="padding: 1em">
+    <h2>Platinum Sponsors:</h2>
+    {{ partial "logo.html" (dict "Page" . "Params" (dict "name" "Improving")) }}
+</div>

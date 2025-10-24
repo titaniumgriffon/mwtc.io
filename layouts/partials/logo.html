@@ -1,0 +1,43 @@
+{{/* Partial: logo.html Supports: - {{< logo >}} → uses current page - {{< logo
+name="Improving" >}} → uses sponsors/Improving.md - {{< logo width="200" >}} →
+sets image width - {{ partial "logo.html" (dict "Page" . "Params" (dict "name"
+"Improving" "width" "200")) }} */}} {{ $page := .Page }} {{ $name := "" }} {{
+$width := "" }} {{/* --- Extract parameters depending on context --- */}} {{ if
+isset . "Params" }} {{ if isset .Params "name" }} {{ $name = .Params.name }} {{
+end }} {{ if isset .Params "width" }} {{ $width = .Params.width }} {{ end }} {{
+else }} {{ if .Get "name" }} {{ $name = .Get "name" }} {{ end }} {{ if .Get
+"width" }} {{ $width = .Get "width" }} {{ end }} {{ end }} {{/* --- Resolve
+target page --- */}} {{ if $name }} {{ $page = site.GetPage (printf
+"sponsors/%s" $name) }} {{ end }} {{ if $page }} {{ $logo := $page.Params.logo
+}} {{ $alt := $page.Params.logo_alt }} {{ $url := $page.RelPermalink }} {{ if
+$logo }}
+<a href="{{ $url }}">
+    <img
+        src="{{ $logo }}"
+        alt="{{ $alt }}"
+        loading="lazy"
+        {{
+        if
+        $width
+        }}
+        width="{{ $width }}"
+        {{
+        end
+        }} />
+</a>
+{{ else }}
+<img
+    src="/images/default-logo.png"
+    alt="Default logo"
+    loading="lazy"
+    {{
+    if
+    $width
+    }}
+    width="{{ $width }}"
+    {{
+    end
+    }} />
+{{ end }} {{ else }}
+<p>⚠️ Page not found{{ if $name }}: {{ $name }}{{ end }}</p>
+{{ end }}

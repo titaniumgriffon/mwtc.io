@@ -1,9 +1,22 @@
 .logo img {
-  width: 30rem;
-  height: auto;
-  border-radius: 10%;
+    width: 30rem;
+    height: auto;
+    border-radius: 10%;
 
-  @media only screen and (max-width: 768px) {
-    width: 17rem;
-  }
+    @media only screen and (max-width: 768px) {
+        width: 17rem;
+    }
+}
+
+.frontpage-logo-container {
+    float: right; /* Floats the container to the right */
+    width: 20%; /* Container takes 20% of parent width */
+    margin-left: 1rem; /* Adds breathing room from main content */
+    text-align: center; /* Centers the image horizontally */
+}
+
+.frontpage-logo-container img {
+    width: 100%; /* Image fills container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Removes inline spacing */
 }
