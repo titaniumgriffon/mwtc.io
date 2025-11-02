@@ -3,7 +3,7 @@ draft = false
 date = 2025-10-23T00:00:00Z
 title = 'Westminster College'
 level = 'Platinum'
-logo = "/images/Westminster_College.png"
+logo = "/images/Westminster_College.jpg"
 logo_alt = "Westminster College Logo"
 +++
 
