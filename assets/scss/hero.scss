@@ -1,3 +1,38 @@
+// ─── Navigation override: dark navy on all pages ─────────────────────────────
+
+.navigation {
+  background-color: #0d1b2a;
+
+  a,
+  span {
+    color: #e2e8f0 !important;
+  }
+
+  a {
+    &:hover,
+    &:focus {
+      color: #54d6ac !important;
+    }
+  }
+
+  i {
+    color: #e2e8f0 !important;
+
+    &:hover,
+    &:focus {
+      color: #54d6ac !important;
+    }
+  }
+
+  .navigation-list {
+    @media only screen and (max-width: 768px) {
+      background-color: #0d1b2a;
+      border-top-color: #1a2e45;
+      border-bottom-color: #1a2e45;
+    }
+  }
+}
+
 // ─── Home page wrapper: fixes .content's display:flex row layout ─────────────
 
 .home-page {
