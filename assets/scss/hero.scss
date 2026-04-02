@@ -229,19 +229,9 @@
 .sponsor-bar {
   width: 100%;
   flex-shrink: 0;
-  background-color: #f0f0f0;
+  background-color: #0d1b2a;
   padding: 3rem 2rem;
   text-align: center;
-}
-
-.colorscheme-dark .sponsor-bar {
-  background-color: #292929;
-}
-
-@media (prefers-color-scheme: dark) {
-  .colorscheme-auto .sponsor-bar {
-    background-color: #292929;
-  }
 }
 
 .sponsor-bar-inner {
@@ -257,7 +247,7 @@
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: #999;
+  color: #7a9ab5;
   margin: 0;
   font-weight: 600;
 }
