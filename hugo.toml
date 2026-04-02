@@ -17,9 +17,9 @@ style = "monokai"
 [params]
   mainTitle = "MWTC"
   subtitle = "Midwest Tech Conference"
-  eventDate = "November 8th, 2025"
+  eventDate = "October 8th, 2026"
   eventTime = "8am to 5pm"
-  eventLocation = "Westminster College, Fulton, MO"
+  eventLocation = "Location TBD"
   description = "A tech conference for the people"
   keywords = "MWTC, Midwest, Tech, Conference, Technical"
   logo = "images/MWTC_dark.png"
@@ -34,11 +34,11 @@ style = "monokai"
 
   customSCSS = ['scss/logo.scss', 'scss/article.scss']
 
-[[params.links]]
-  name = "Westminster College, Champ Auditorium"
-  icon = "fa fa-2x fa-map-marker"
-  weight = 1
-  url = "https://maps.app.goo.gl/2GBPMJxK4S7DCVs39"
+#[[params.links]]
+#  name = "Westminster College, Champ Auditorium"
+#  icon = "fa fa-2x fa-map-marker"
+#  weight = 1
+#  url = "https://maps.app.goo.gl/2GBPMJxK4S7DCVs39"
 
 #[[params.links]]
 #  name = "Call for Papers"
@@ -54,9 +54,9 @@ style = "monokai"
 
 # Menu links
 [[menu.main]]
-  name = "Register now!"
+  name = "Tickets on sale May 1st!"
   weight = 1
-  url = "https://www.eventbrite.com/e/midwest-tech-conference-2025-tickets-1405626569909"
+  url = "https://www.eventbrite.com/e/mid-west-tech-conference-2026-tickets-1983590577815"
   target = "_blank"
 [[menu.main]]
   name = "Schedule"
