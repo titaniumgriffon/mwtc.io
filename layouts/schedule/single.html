@@ -88,38 +88,6 @@
 
 </article>
 
-<style>
-/* Layout */
-.session-page { max-width: 1200px; margin: 2rem auto; padding: 1rem; }
-.session-container { display: flex; flex-wrap: wrap; gap: 2rem; }
-
-/* Main content */
-.session-main { flex: 2 1 600px; }
-
-/* Sidebar */
-.session-sidebar { flex: 1 1 250px; background: #2e2e2e; padding: 1rem; border-radius: 8px; }
-.session-sidebar h3 { margin-top: 0; text-align: center; }
-.speaker-photos { display: flex; flex-direction: column; gap: 1rem; }
-.speaker-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.speaker-photo { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; }
-.speaker-name { margin-top: 0.5rem; font-weight: bold; }
-
-/* Header & Details */
-.session-header { border-bottom: 1px solid #ccc; margin-bottom: 1rem; padding-bottom: 0.5rem; }
-.session-title { font-size: 2rem; margin: 0; }
-.session-subtitle { font-size: 1.25rem; color: #555; margin: 0.25rem 0 0; }
-.session-details p { margin: 0.25rem 0; }
-.session-description h3 { margin-top: 1rem; }
-.session-footer { margin-top: 2rem; }
-.back-link { text-decoration: none; color: #007acc; }
-.back-link:hover { text-decoration: underline; }
-
-/* Responsive */
-@media (max-width: 900px) {
-  .session-container { flex-direction: column; }
-  .session-sidebar { flex: 1 1 100%; }
-}
-</style>
 
 {{ else }}
 <p>Session not found.</p>
