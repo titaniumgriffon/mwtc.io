@@ -1,8 +1,17 @@
+// ─── Remove gap between content and footer ───────────────────────────────────
+// The theme gives .content margin-bottom: 3.2rem, which shows body background
+// between content and the dark footer. Remove it site-wide.
+
+.content {
+  margin-bottom: 0 !important;
+}
+
 // ─── Footer ──────────────────────────────────────────────────────────────────
 
 .footer {
   background-color: #0d1b2a;
   color: #7a9ab5;
+  padding: 2rem 0;
   margin-bottom: 0 !important;
 
   a {
