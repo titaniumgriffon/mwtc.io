@@ -32,7 +32,8 @@ style = "monokai"
   colorScheme = "auto"
   hidecolorschemetoggle = false
 
-  customSCSS = ['scss/logo.scss', 'scss/article.scss']
+  customSCSS = ['scss/logo.scss', 'scss/article.scss', 'scss/hero.scss']
+  customJS = ['js/countdown.js']
 
 #[[params.links]]
 #  name = "Westminster College, Champ Auditorium"

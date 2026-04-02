@@ -1,0 +1,3 @@
+{{ range where .Site.Menus.main "Weight" 1 }}
+<a href="{{ .URL }}" class="hero-cta"{{ with .Params.target }} target="{{ . }}"{{ end }}>{{ .Name }}</a>
+{{ end }}
