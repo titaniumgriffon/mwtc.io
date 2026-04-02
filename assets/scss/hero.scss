@@ -48,6 +48,7 @@
 }
 
 // ─── Hero Section ────────────────────────────────────────────────────────────
+// Default (dark mode base): dark navy gradient, white text
 
 .hero {
   width: 100%;
@@ -55,6 +56,25 @@
   padding: 6rem 2rem 5rem;
   text-align: center;
   color: #fff;
+}
+
+// Light mode hero: muted blue-gray palette matching body background
+body.colorscheme-light .hero,
+body.colorscheme-auto .hero {
+  background: linear-gradient(150deg, #4a7a9b 0%, #6d94ac 100%);
+  color: #0d1b2a;
+}
+
+body.colorscheme-dark .hero {
+  background: linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto .hero {
+    background: linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
+    color: #fff;
+  }
 }
 
 .hero-inner {
@@ -70,10 +90,29 @@
   max-width: 28rem;
   height: auto;
   border-radius: 0;
-  mix-blend-mode: screen; // makes the black background transparent, keeps white logo
+  mix-blend-mode: screen; // dark mode: black bg → transparent, white logo stays
 
   @media only screen and (max-width: 768px) {
     max-width: 18rem;
+  }
+}
+
+// Light mode: switch to light logo with multiply blend (white bg → transparent)
+body.colorscheme-light .hero-logo img,
+body.colorscheme-auto .hero-logo img {
+  mix-blend-mode: multiply;
+  content: url("/images/MWTC_light.png");
+}
+
+body.colorscheme-dark .hero-logo img {
+  mix-blend-mode: screen;
+  content: url("/images/MWTC_dark.png");
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto .hero-logo img {
+    mix-blend-mode: screen;
+    content: url("/images/MWTC_dark.png");
   }
 }
 
@@ -100,6 +139,28 @@
 
   i {
     color: #54d6ac;
+  }
+}
+
+// Light mode: darken text for readability on blue-gray background
+body.colorscheme-light,
+body.colorscheme-auto {
+  .hero-tagline { color: #1a2e45; }
+  .hero-meta { color: #0d1b2a; }
+  .hero-meta i { color: #1e6b54; }
+}
+
+body.colorscheme-dark {
+  .hero-tagline { color: #a8c5da; }
+  .hero-meta { color: #cbd5e0; }
+  .hero-meta i { color: #54d6ac; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .hero-tagline { color: #a8c5da; }
+    .hero-meta { color: #cbd5e0; }
+    .hero-meta i { color: #54d6ac; }
   }
 }
 
@@ -152,6 +213,28 @@
 
   @media only screen and (max-width: 768px) {
     font-size: 3.2rem;
+  }
+}
+
+// Light mode countdown: dark navy numbers for contrast
+body.colorscheme-light,
+body.colorscheme-auto {
+  .countdown-number { color: #0d1b2a; }
+  .countdown-label { color: #2a4a66; }
+  .countdown-sep { color: #0d1b2a; }
+}
+
+body.colorscheme-dark {
+  .countdown-number { color: #54d6ac; }
+  .countdown-label { color: #7a9ab5; }
+  .countdown-sep { color: #54d6ac; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .countdown-number { color: #54d6ac; }
+    .countdown-label { color: #7a9ab5; }
+    .countdown-sep { color: #54d6ac; }
   }
 }
 
@@ -221,6 +304,43 @@
     color: #8bafc9;
     text-align: center;
     line-height: 1.4;
+  }
+}
+
+// Light mode value props: dark backgrounds become translucent dark overlays
+body.colorscheme-light,
+body.colorscheme-auto {
+  .value-prop {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(13, 27, 42, 0.2);
+
+    i { color: #1e6b54; }
+    strong { color: #0d1b2a; }
+    span { color: #1a3a55; }
+  }
+}
+
+body.colorscheme-dark {
+  .value-prop {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(84, 214, 172, 0.18);
+
+    i { color: #54d6ac; }
+    strong { color: #fff; }
+    span { color: #8bafc9; }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    .value-prop {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(84, 214, 172, 0.18);
+
+      i { color: #54d6ac; }
+      strong { color: #fff; }
+      span { color: #8bafc9; }
+    }
   }
 }
 
