@@ -1,11 +1,13 @@
-<section class="hero">
-  <div class="hero-inner">
-    {{ partialCached "home/logo.html" . }}
-    {{ partialCached "home/title.html" . }}
-    {{ partialCached "home/countdown.html" . }}
-    {{ partialCached "home/cta.html" . }}
-    {{ partialCached "home/value-props.html" . }}
-  </div>
-</section>
+<div class="home-page">
+  <section class="hero">
+    <div class="hero-inner">
+      {{ partialCached "home/logo.html" . }}
+      {{ partialCached "home/title.html" . }}
+      {{ partialCached "home/countdown.html" . }}
+      {{ partialCached "home/cta.html" . }}
+      {{ partialCached "home/value-props.html" . }}
+    </div>
+  </section>
 
-{{ partial "home/sponsor-bar.html" . }}
+  {{ partial "home/sponsor-bar.html" . }}
+</div>
