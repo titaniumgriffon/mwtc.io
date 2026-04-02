@@ -6,6 +6,26 @@
   margin-bottom: 0 !important;
 }
 
+// ─── Body background ─────────────────────────────────────────────────────────
+// Mirror the theme's selector pattern (body.colorscheme-*) to match specificity.
+// Light: muted blue-gray instead of stark #fafafa white.
+// Dark: dark navy instead of #212121 gray.
+
+body.colorscheme-light,
+body.colorscheme-auto {
+  background-color: #b8ccd8;
+}
+
+body.colorscheme-dark {
+  background-color: #111e2d !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    background-color: #111e2d !important;
+  }
+}
+
 // ─── Footer ──────────────────────────────────────────────────────────────────
 
 .footer {
