@@ -1,7 +1,7 @@
 // ─── Navigation override: dark navy on all pages ─────────────────────────────
 
 .navigation {
-  background-color: #0d1b2a;
+  background-color: var(--navy);
 
   a,
   span {
@@ -11,7 +11,7 @@
   a {
     &:hover,
     &:focus {
-      color: #54d6ac !important;
+      color: var(--teal) !important;
     }
   }
 
@@ -20,15 +20,15 @@
 
     &:hover,
     &:focus {
-      color: #54d6ac !important;
+      color: var(--teal) !important;
     }
   }
 
   .navigation-list {
     @media only screen and (max-width: 768px) {
-      background-color: #0d1b2a;
-      border-top-color: #1a2e45;
-      border-bottom-color: #1a2e45;
+      background-color: var(--navy);
+      border-top-color: var(--navy-mid);
+      border-bottom-color: var(--navy-mid);
     }
   }
 }
@@ -48,33 +48,13 @@
 }
 
 // ─── Hero Section ────────────────────────────────────────────────────────────
-// Default (dark mode base): dark navy gradient, white text
 
 .hero {
   width: 100%;
-  background: linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
+  background: var(--hero-bg);
   padding: 6rem 2rem 5rem;
   text-align: center;
-  color: #fff;
-}
-
-// Light mode hero: muted blue-gray palette matching body background
-body.colorscheme-light .hero,
-body.colorscheme-auto .hero {
-  background: linear-gradient(150deg, #4a7a9b 0%, #6d94ac 100%);
-  color: #0d1b2a;
-}
-
-body.colorscheme-dark .hero {
-  background: linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
-  color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  body.colorscheme-auto .hero {
-    background: linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
-    color: #fff;
-  }
+  color: var(--hero-text);
 }
 
 .hero-inner {
@@ -86,39 +66,39 @@ body.colorscheme-dark .hero {
   gap: 2.8rem;
 }
 
-.hero-logo img {
-  max-width: 28rem;
-  height: auto;
-  border-radius: 0;
-  mix-blend-mode: screen; // dark mode: black bg → transparent, white logo stays
+// ─── Logo: dual images, CSS variables control which is shown ──────────────────
+// Light mode uses MWTC_light.png + multiply (white bg → transparent).
+// Dark mode uses MWTC_dark.png  + screen   (black bg → transparent).
 
-  @media only screen and (max-width: 768px) {
-    max-width: 18rem;
+.hero-logo {
+  .logo-light {
+    display: var(--logo-light-display);
+    max-width: 28rem;
+    height: auto;
+    mix-blend-mode: multiply;
+
+    @media only screen and (max-width: 768px) {
+      max-width: 18rem;
+    }
   }
-}
 
-// Light mode: switch to light logo with multiply blend (white bg → transparent)
-body.colorscheme-light .hero-logo img,
-body.colorscheme-auto .hero-logo img {
-  mix-blend-mode: multiply;
-  content: url("/images/MWTC_light.png");
-}
-
-body.colorscheme-dark .hero-logo img {
-  mix-blend-mode: screen;
-  content: url("/images/MWTC_dark.png");
-}
-
-@media (prefers-color-scheme: dark) {
-  body.colorscheme-auto .hero-logo img {
+  .logo-dark {
+    display: var(--logo-dark-display);
+    max-width: 28rem;
+    height: auto;
     mix-blend-mode: screen;
-    content: url("/images/MWTC_dark.png");
+
+    @media only screen and (max-width: 768px) {
+      max-width: 18rem;
+    }
   }
 }
+
+// ─── Hero text ────────────────────────────────────────────────────────────────
 
 .hero-tagline {
   font-size: 2rem;
-  color: #a8c5da;
+  color: var(--hero-tagline);
   margin: 0;
   letter-spacing: 0.04em;
 }
@@ -129,7 +109,7 @@ body.colorscheme-dark .hero-logo img {
   justify-content: center;
   gap: 1rem 2.5rem;
   font-size: 1.6rem;
-  color: #cbd5e0;
+  color: var(--hero-meta);
 
   span {
     display: inline-flex;
@@ -138,29 +118,7 @@ body.colorscheme-dark .hero-logo img {
   }
 
   i {
-    color: #54d6ac;
-  }
-}
-
-// Light mode: darken text for readability on blue-gray background
-body.colorscheme-light,
-body.colorscheme-auto {
-  .hero-tagline { color: #1a2e45; }
-  .hero-meta { color: #0d1b2a; }
-  .hero-meta i { color: #1e6b54; }
-}
-
-body.colorscheme-dark {
-  .hero-tagline { color: #a8c5da; }
-  .hero-meta { color: #cbd5e0; }
-  .hero-meta i { color: #54d6ac; }
-}
-
-@media (prefers-color-scheme: dark) {
-  body.colorscheme-auto {
-    .hero-tagline { color: #a8c5da; }
-    .hero-meta { color: #cbd5e0; }
-    .hero-meta i { color: #54d6ac; }
+    color: var(--hero-meta-icon);
   }
 }
 
@@ -187,7 +145,7 @@ body.colorscheme-dark {
   font-size: 5.2rem;
   font-weight: 700;
   line-height: 1;
-  color: #54d6ac;
+  color: var(--cd-num);
   font-variant-numeric: tabular-nums;
 
   @media only screen and (max-width: 768px) {
@@ -199,14 +157,14 @@ body.colorscheme-dark {
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #7a9ab5;
+  color: var(--cd-label);
   margin-top: 0.5rem;
 }
 
 .countdown-sep {
   font-size: 4.4rem;
   font-weight: 700;
-  color: #54d6ac;
+  color: var(--cd-sep);
   line-height: 1;
   padding-top: 0.05em;
   opacity: 0.6;
@@ -216,34 +174,12 @@ body.colorscheme-dark {
   }
 }
 
-// Light mode countdown: dark navy numbers for contrast
-body.colorscheme-light,
-body.colorscheme-auto {
-  .countdown-number { color: #0d1b2a; }
-  .countdown-label { color: #2a4a66; }
-  .countdown-sep { color: #0d1b2a; }
-}
-
-body.colorscheme-dark {
-  .countdown-number { color: #54d6ac; }
-  .countdown-label { color: #7a9ab5; }
-  .countdown-sep { color: #54d6ac; }
-}
-
-@media (prefers-color-scheme: dark) {
-  body.colorscheme-auto {
-    .countdown-number { color: #54d6ac; }
-    .countdown-label { color: #7a9ab5; }
-    .countdown-sep { color: #54d6ac; }
-  }
-}
-
 // ─── CTA Button ──────────────────────────────────────────────────────────────
 
 .hero-cta {
   display: inline-block;
-  background-color: #54d6ac;
-  color: #0d1b2a !important;
+  background-color: var(--teal);
+  color: var(--navy) !important;
   font-size: 1.8rem;
   font-weight: 700;
   padding: 1.4rem 4rem;
@@ -254,7 +190,7 @@ body.colorscheme-dark {
 
   &:hover,
   &:focus {
-    background-color: #3ec49a;
+    background-color: var(--teal-hover);
     transform: translateY(-2px);
     text-decoration: none !important;
   }
@@ -283,64 +219,27 @@ body.colorscheme-dark {
   align-items: center;
   gap: 0.4rem;
   padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(84, 214, 172, 0.18);
+  background: var(--vp-bg);
+  border: 1px solid var(--vp-border);
   border-radius: 1rem;
 
   i {
     font-size: 2.4rem;
-    color: #54d6ac;
+    color: var(--vp-icon);
     margin-bottom: 0.4rem;
   }
 
   strong {
     font-size: 1.7rem;
-    color: #fff;
+    color: var(--vp-strong);
     line-height: 1.3;
   }
 
   span {
     font-size: 1.3rem;
-    color: #8bafc9;
+    color: var(--vp-span);
     text-align: center;
     line-height: 1.4;
-  }
-}
-
-// Light mode value props: dark backgrounds become translucent dark overlays
-body.colorscheme-light,
-body.colorscheme-auto {
-  .value-prop {
-    background: rgba(0, 0, 0, 0.08);
-    border-color: rgba(13, 27, 42, 0.2);
-
-    i { color: #1e6b54; }
-    strong { color: #0d1b2a; }
-    span { color: #1a3a55; }
-  }
-}
-
-body.colorscheme-dark {
-  .value-prop {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(84, 214, 172, 0.18);
-
-    i { color: #54d6ac; }
-    strong { color: #fff; }
-    span { color: #8bafc9; }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body.colorscheme-auto {
-    .value-prop {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(84, 214, 172, 0.18);
-
-      i { color: #54d6ac; }
-      strong { color: #fff; }
-      span { color: #8bafc9; }
-    }
   }
 }
 
@@ -349,7 +248,7 @@ body.colorscheme-dark {
 .sponsor-bar {
   width: 100%;
   flex-shrink: 0;
-  background-color: #0d1b2a;
+  background-color: var(--navy);
   padding: 3rem 2rem;
   text-align: center;
 }

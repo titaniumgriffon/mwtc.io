@@ -3,8 +3,8 @@
 {{ end }}
 {{ define "content" }}
 
-{{ $sessions := site.Data.sessions.sessions }}
-{{ $speakers := site.Data.sessions.speakers }}
+{{ $sessions  := site.Data.sessions.sessions }}
+{{ $speakers  := site.Data.sessions.speakers }}
 
 <section class="schedule-list">
   <h1 class="title schedule-title">Conference Schedule</h1>
@@ -20,20 +20,7 @@
         {{ range .speakers }}
           {{ $speaker := index (where $speakers "id" .) 0 }}
           {{ if $speaker }}
-            <div class="speaker-inline">
-              {{ if $speaker.profilePicture }}
-                <img src="{{ $speaker.profilePicture }}" alt="{{ $speaker.fullName }}" class="speaker-photo">
-              {{ else }}
-                {{ $nameParts := split $speaker.fullName " " }}
-                {{ $firstInitial := substr (index $nameParts 0) 0 1 }}
-                {{ $lastInitial := "" }}
-                {{ if gt (len $nameParts) 1 }}
-                  {{ $lastInitial = substr (index $nameParts (sub (len $nameParts) 1)) 0 1 }}
-                {{ end }}
-                <div class="speaker-initials">{{ printf "%s%s" $firstInitial $lastInitial }}</div>
-              {{ end }}
-              <span class="speaker-name">{{ $speaker.fullName }}</span>
-            </div>
+            {{ partial "schedule/speaker-inline.html" $speaker }}
           {{ end }}
         {{ end }}
       </div>

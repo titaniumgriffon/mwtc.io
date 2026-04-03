@@ -1,43 +1,38 @@
-{{/* Partial: logo.html Supports: - {{< logo >}} → uses current page - {{< logo
-name="Improving" >}} → uses sponsors/Improving.md - {{< logo width="200" >}} →
-sets image width - {{ partial "logo.html" (dict "Page" . "Params" (dict "name"
-"Improving" "width" "200")) }} */}} {{ $page := .Page }} {{ $name := "" }} {{
-$width := "" }} {{/* --- Extract parameters depending on context --- */}} {{ if
-isset . "Params" }} {{ if isset .Params "name" }} {{ $name = .Params.name }} {{
-end }} {{ if isset .Params "width" }} {{ $width = .Params.width }} {{ end }} {{
-else }} {{ if .Get "name" }} {{ $name = .Get "name" }} {{ end }} {{ if .Get
-"width" }} {{ $width = .Get "width" }} {{ end }} {{ end }} {{/* --- Resolve
-target page --- */}} {{ if $name }} {{ $page = site.GetPage (printf
-"sponsors/%s" $name) }} {{ end }} {{ if $page }} {{ $logo := $page.Params.logo
-}} {{ $alt := $page.Params.logo_alt }} {{ $url := $page.RelPermalink }} {{ if
-$logo }}
-<a href="{{ $url }}">
-    <img
-        src="{{ $logo }}"
-        alt="{{ $alt }}"
-        loading="lazy"
-        {{
-        if
-        $width
-        }}
-        width="{{ $width }}"
-        {{
-        end
-        }} />
-</a>
+{{/* Partial: logo.html
+     Renders a sponsor logo linked to its sponsor page.
+     Usage from template: {{ partial "logo.html" (dict "Page" . "Params" (dict "name" "Improving" "width" "200")) }}
+     Usage from shortcode: {{ partial "logo.html" . }}  (shortcode passes .Get values)
+*/}}
+{{ $page  := .Page }}
+{{ $name  := "" }}
+{{ $width := "" }}
+
+{{/* Extract parameters depending on context (partial dict vs shortcode) */}}
+{{ if isset . "Params" }}
+  {{ with .Params.name  }}{{ $name  = . }}{{ end }}
+  {{ with .Params.width }}{{ $width = . }}{{ end }}
 {{ else }}
-<img
-    src="/images/default-logo.png"
-    alt="Default logo"
-    loading="lazy"
-    {{
-    if
-    $width
-    }}
-    width="{{ $width }}"
-    {{
-    end
-    }} />
-{{ end }} {{ else }}
-<p>⚠️ Page not found{{ if $name }}: {{ $name }}{{ end }}</p>
+  {{ with .Get "name"  }}{{ $name  = . }}{{ end }}
+  {{ with .Get "width" }}{{ $width = . }}{{ end }}
+{{ end }}
+
+{{/* Resolve target page */}}
+{{ if $name }}
+  {{ $page = site.GetPage (printf "sponsors/%s" $name) }}
+{{ end }}
+
+{{ if $page }}
+  {{ $logo := $page.Params.logo }}
+  {{ $alt  := $page.Params.logo_alt | default $page.Title }}
+  {{ $url  := $page.RelPermalink }}
+
+  {{ if $logo }}
+    <a href="{{ $url }}">
+      <img src="{{ $logo }}" alt="{{ $alt }}" loading="lazy"{{ with $width }} width="{{ . }}"{{ end }}>
+    </a>
+  {{ else }}
+    <a href="{{ $url }}">{{ $page.Title }}</a>
+  {{ end }}
+{{ else }}
+  <p>⚠️ Sponsor page not found{{ with $name }}: {{ . }}{{ end }}</p>
 {{ end }}

@@ -1,22 +1,9 @@
 <div class="value-props">
+  {{ range .Site.Params.valueProps }}
   <div class="value-prop">
-    <i class="fa-solid fa-ticket" aria-hidden="true"></i>
-    <strong>$10</strong>
-    <span>Free for students</span>
+    <i class="{{ .icon }}" aria-hidden="true"></i>
+    <strong>{{ .strong }}</strong>
+    <span>{{ .span }}</span>
   </div>
-  <div class="value-prop">
-    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
-    <strong>8+ Sessions</strong>
-    <span>Talks &amp; workshops</span>
-  </div>
-  <div class="value-prop">
-    <i class="fa-solid fa-people-group" aria-hidden="true"></i>
-    <strong>All Are Welcome</strong>
-    <span>Enthusiasts to experts</span>
-  </div>
-  <div class="value-prop">
-    <i class="fa-solid fa-heart" aria-hidden="true"></i>
-    <strong>Volunteer-Run</strong>
-    <span>Community powered</span>
-  </div>
+  {{ end }}
 </div>

@@ -1,0 +1,93 @@
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+// Theme-invariant palette values available everywhere as CSS custom properties.
+
+:root {
+  --teal:        #54d6ac;
+  --teal-hover:  #3ec49a;
+  --teal-dark:   #1e6b54;  // accessible teal for light backgrounds
+  --navy:        #0d1b2a;
+  --navy-mid:    #1a2e45;
+  --teal-15:     rgba(84, 214, 172, 0.15);
+  --teal-20:     rgba(84, 214, 172, 0.20);
+  --teal-30:     rgba(84, 214, 172, 0.30);
+}
+
+// ─── Light mode (default) ─────────────────────────────────────────────────────
+
+body.colorscheme-light,
+body.colorscheme-auto {
+  --body-bg:          #b8ccd8;
+
+  // Hero
+  --hero-bg:          linear-gradient(150deg, #4a7a9b 0%, #6d94ac 100%);
+  --hero-text:        #0d1b2a;
+  --hero-tagline:     #1a2e45;
+  --hero-meta:        #0d1b2a;
+  --hero-meta-icon:   #1e6b54;
+
+  // Countdown
+  --cd-num:           #0d1b2a;
+  --cd-label:         #2a4a66;
+  --cd-sep:           #0d1b2a;
+
+  // Value props
+  --vp-bg:            rgba(0, 0, 0, 0.08);
+  --vp-border:        rgba(13, 27, 42, 0.2);
+  --vp-icon:          #1e6b54;
+  --vp-strong:        #0d1b2a;
+  --vp-span:          #1a3a55;
+
+  // Logo display
+  --logo-light-display: block;
+  --logo-dark-display:  none;
+}
+
+// ─── Dark mode ────────────────────────────────────────────────────────────────
+
+body.colorscheme-dark {
+  --body-bg:          #111e2d;
+
+  --hero-bg:          linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
+  --hero-text:        #fff;
+  --hero-tagline:     #a8c5da;
+  --hero-meta:        #cbd5e0;
+  --hero-meta-icon:   #54d6ac;
+
+  --cd-num:           #54d6ac;
+  --cd-label:         #7a9ab5;
+  --cd-sep:           #54d6ac;
+
+  --vp-bg:            rgba(255, 255, 255, 0.05);
+  --vp-border:        rgba(84, 214, 172, 0.18);
+  --vp-icon:          #54d6ac;
+  --vp-strong:        #fff;
+  --vp-span:          #8bafc9;
+
+  --logo-light-display: none;
+  --logo-dark-display:  block;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    --body-bg:          #111e2d;
+
+    --hero-bg:          linear-gradient(150deg, #0d1b2a 0%, #1a2e45 100%);
+    --hero-text:        #fff;
+    --hero-tagline:     #a8c5da;
+    --hero-meta:        #cbd5e0;
+    --hero-meta-icon:   #54d6ac;
+
+    --cd-num:           #54d6ac;
+    --cd-label:         #7a9ab5;
+    --cd-sep:           #54d6ac;
+
+    --vp-bg:            rgba(255, 255, 255, 0.05);
+    --vp-border:        rgba(84, 214, 172, 0.18);
+    --vp-icon:          #54d6ac;
+    --vp-strong:        #fff;
+    --vp-span:          #8bafc9;
+
+    --logo-light-display: none;
+    --logo-dark-display:  block;
+  }
+}

@@ -1,0 +1,16 @@
+{{/* Renders one speaker as an inline badge.
+     Expects: a speaker object from site.Data.sessions.speakers */}}
+<div class="speaker-inline">
+  {{ if .profilePicture }}
+    <img src="{{ .profilePicture }}" alt="{{ .fullName }}" class="speaker-photo">
+  {{ else }}
+    {{ $parts := split .fullName " " }}
+    {{ $first := substr (index $parts 0) 0 1 }}
+    {{ $last  := "" }}
+    {{ if gt (len $parts) 1 }}
+      {{ $last = substr (index $parts (sub (len $parts) 1)) 0 1 }}
+    {{ end }}
+    <div class="speaker-initials">{{ printf "%s%s" $first $last }}</div>
+  {{ end }}
+  <span class="speaker-name">{{ .fullName }}</span>
+</div>

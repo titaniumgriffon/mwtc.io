@@ -7,39 +7,36 @@
 }
 
 // ─── Body background ─────────────────────────────────────────────────────────
-// Mirror the theme's selector pattern (body.colorscheme-*) to match specificity.
-// Light: muted blue-gray instead of stark #fafafa white.
-// Dark: dark navy instead of #212121 gray.
 
 body.colorscheme-light,
 body.colorscheme-auto {
-  background-color: #b8ccd8;
+  background-color: var(--body-bg);
 }
 
 body.colorscheme-dark {
-  background-color: #111e2d !important;
+  background-color: var(--body-bg) !important;
 }
 
 @media (prefers-color-scheme: dark) {
   body.colorscheme-auto {
-    background-color: #111e2d !important;
+    background-color: var(--body-bg) !important;
   }
 }
 
 // ─── Footer ──────────────────────────────────────────────────────────────────
 
 .footer {
-  background-color: #0d1b2a;
+  background-color: var(--navy);
   color: #7a9ab5;
   padding: 2rem 0;
   margin-bottom: 0 !important;
 
   a {
-    color: #54d6ac !important;
+    color: var(--teal) !important;
 
     &:hover,
     &:focus {
-      color: #3ec49a !important;
+      color: var(--teal-hover) !important;
     }
   }
 }
@@ -53,7 +50,7 @@ body.colorscheme-dark {
 
   // Page title
   header {
-    border-bottom: 3px solid #54d6ac;
+    border-bottom: 3px solid var(--teal);
     padding-bottom: 1.5rem;
     margin-bottom: 3rem;
 
@@ -74,11 +71,11 @@ body.colorscheme-dark {
 
 .container.page article a,
 .container.list ul a {
-  color: #54d6ac;
+  color: var(--teal);
 
   &:hover,
   &:focus {
-    color: #3ec49a;
+    color: var(--teal-hover);
   }
 }
 
@@ -86,7 +83,7 @@ body.colorscheme-dark {
 
 .container.page dl {
   dt {
-    color: #54d6ac;
+    color: var(--teal);
     font-weight: 700;
     font-size: 1.9rem;
     margin-top: 2.5rem;
@@ -111,7 +108,7 @@ body.colorscheme-dark {
 
   li {
     padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(84, 214, 172, 0.15);
+    border-bottom: 1px solid var(--teal-15);
     font-size: 1.8rem;
 
     &:last-child {
@@ -127,7 +124,7 @@ body.colorscheme-dark {
 
     &:hover,
     &:focus {
-      color: #54d6ac !important;
+      color: var(--teal) !important;
     }
   }
 }
@@ -161,14 +158,14 @@ body.colorscheme-dark {
   color: inherit;
   border-radius: 1rem;
   padding: 2rem;
-  border: 1px solid rgba(84, 214, 172, 0.15);
+  border: 1px solid var(--teal-15);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(84, 214, 172, 0.2);
-    border-color: rgba(84, 214, 172, 0.4);
+    border-color: var(--teal-30);
     text-decoration: none !important;
   }
 }
@@ -186,7 +183,7 @@ body.colorscheme-dark {
 .schedule-time {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #54d6ac;
+  color: var(--teal);
   margin-bottom: 0.5rem;
 }
 
@@ -226,8 +223,8 @@ body.colorscheme-dark {
 }
 
 .speaker-initials {
-  background: #54d6ac;
-  color: #0d1b2a;
+  background: var(--teal);
+  color: var(--navy);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,14 +260,14 @@ body.colorscheme-dark {
   flex: 1 1 25rem;
   align-self: flex-start;
   background: rgba(84, 214, 172, 0.05);
-  border: 1px solid rgba(84, 214, 172, 0.2);
+  border: 1px solid var(--teal-20);
   padding: 1.5rem;
   border-radius: 1rem;
 
   h3 {
     margin-top: 0;
     text-align: center;
-    color: #54d6ac;
+    color: var(--teal);
   }
 }
 
@@ -301,12 +298,12 @@ body.colorscheme-dark {
     height: 10rem;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid rgba(84, 214, 172, 0.3);
+    border: 2px solid var(--teal-30);
   }
 }
 
 .session-header {
-  border-bottom: 2px solid rgba(84, 214, 172, 0.2);
+  border-bottom: 2px solid var(--teal-20);
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
 }
@@ -323,22 +320,22 @@ body.colorscheme-dark {
 }
 
 .session-description h3 {
-  color: #54d6ac;
+  color: var(--teal);
 }
 
 .session-footer {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(84, 214, 172, 0.15);
+  border-top: 1px solid var(--teal-15);
 }
 
 .back-link {
-  color: #54d6ac !important;
+  color: var(--teal) !important;
   font-weight: 600;
 
   &:hover,
   &:focus {
-    color: #3ec49a !important;
+    color: var(--teal-hover) !important;
   }
 }
 
