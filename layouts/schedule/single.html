@@ -72,11 +72,12 @@
           {{ if $speaker }}
           {{ $link := index (where $speaker.links "linkType" "Sessionize") 0 }}
           <div class="speaker-card">
-            <a href="{{ $link.url }}" >
-                <figure><img src="{{ $speaker.profilePicture }}" alt="{{ $speaker.fullName }}" class="speaker-photo">
-                <figcaption>{{ $speaker.fullName }}</figcaption></figure>
+            <a href="{{ $link.url }}">
+                <figure>
+                  <img src="{{ $speaker.profilePicture }}" alt="{{ $speaker.fullName }}" class="speaker-photo">
+                  <figcaption>{{ $speaker.fullName }}</figcaption>
+                </figure>
             </a>
-            <p class="speaker-name">{{ $speaker.name }}</p>
           </div>
           {{ end }}
         {{ end }}
