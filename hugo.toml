@@ -28,26 +28,6 @@ style = "monokai"
   favicon_16 = "/images/favicon-16x16.png"
 
   since = 2025
-
-  [[params.valueProps]]
-    icon   = "fa-solid fa-ticket"
-    strong = "$10"
-    span   = "Free for students"
-
-  [[params.valueProps]]
-    icon   = "fa-solid fa-microphone"
-    strong = "8+ Sessions"
-    span   = "Talks & workshops"
-
-  [[params.valueProps]]
-    icon   = "fa-solid fa-people-group"
-    strong = "All Are Welcome"
-    span   = "Enthusiasts to experts"
-
-  [[params.valueProps]]
-    icon   = "fa-solid fa-heart"
-    strong = "Volunteer-Run"
-    span   = "Community powered"
   enableTwemoji = true
   colorScheme = "auto"
   hidecolorschemetoggle = false
@@ -66,6 +46,26 @@ style = "monokai"
 #  icon = "fa fa-2x fa-commenting"
 #  weight = 2
 #  url = "https://sessionize.com/mwtc"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-ticket"
+  strong = "$10"
+  span   = "Free for students"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-microphone"
+  strong = "8+ Sessions"
+  span   = "Talks & workshops"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-people-group"
+  strong = "All Are Welcome"
+  span   = "Enthusiasts to experts"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-heart"
+  strong = "Volunteer-Run"
+  span   = "Community powered"
 
 [taxonomies]
   category = "categories"
