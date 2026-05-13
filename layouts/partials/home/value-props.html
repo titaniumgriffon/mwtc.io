@@ -1,0 +1,9 @@
+<div class="value-props">
+  {{ range .Site.Params.valueProps }}
+  <div class="value-prop">
+    <i class="{{ .icon }}" aria-hidden="true"></i>
+    <strong>{{ .strong }}</strong>
+    <span>{{ .span }}</span>
+  </div>
+  {{ end }}
+</div>

@@ -1,9 +1,7 @@
-<h1>{{ .Site.Params.mainTitle }}</h1>
+<p class="hero-tagline">{{ .Site.Params.description }}</p>
 
-<h2>{{ .Site.Params.subtitle | markdownify }} </h2>
-
-<h2>{{ .Site.Params.eventDate }}</h2>
-
-<h2>{{ .Site.Params.eventTime }}</h2>
-
-<h2>{{ .Site.Params.eventLocation }}</h2>
+<div class="hero-meta">
+  <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> {{ .Site.Params.eventDate }}</span>
+  <span><i class="fa-solid fa-clock" aria-hidden="true"></i> {{ .Site.Params.eventTime }}</span>
+  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ .Site.Params.eventLocation }}</span>
+</div>

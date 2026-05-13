@@ -17,9 +17,9 @@ style = "monokai"
 [params]
   mainTitle = "MWTC"
   subtitle = "Midwest Tech Conference"
-  eventDate = "November 8th, 2025"
+  eventDate = "October 7th, 2026"
   eventTime = "8am to 5pm"
-  eventLocation = "Westminster College, Fulton, MO"
+  eventLocation = "Location TBD"
   description = "A tech conference for the people"
   keywords = "MWTC, Midwest, Tech, Conference, Technical"
   logo = "images/MWTC_dark.png"
@@ -32,19 +32,40 @@ style = "monokai"
   colorScheme = "auto"
   hidecolorschemetoggle = false
 
-  customSCSS = ['scss/logo.scss', 'scss/article.scss']
+  customSCSS = ['scss/variables.scss', 'scss/logo.scss', 'scss/article.scss', 'scss/hero.scss', 'scss/pages.scss']
+  customJS = ['js/countdown.js']
 
-[[params.links]]
-  name = "Westminster College, Champ Auditorium"
-  icon = "fa fa-2x fa-map-marker"
-  weight = 1
-  url = "https://maps.app.goo.gl/2GBPMJxK4S7DCVs39"
+#[[params.links]]
+#  name = "Westminster College, Champ Auditorium"
+#  icon = "fa fa-2x fa-map-marker"
+#  weight = 1
+#  url = "https://maps.app.goo.gl/2GBPMJxK4S7DCVs39"
 
 #[[params.links]]
 #  name = "Call for Papers"
 #  icon = "fa fa-2x fa-commenting"
 #  weight = 2
 #  url = "https://sessionize.com/mwtc"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-ticket"
+  strong = "$10"
+  span   = "Free for students"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-microphone"
+  strong = "8+ Sessions"
+  span   = "Talks & workshops"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-people-group"
+  strong = "All Are Welcome"
+  span   = "Enthusiasts to experts"
+
+[[params.valueProps]]
+  icon   = "fa-solid fa-heart"
+  strong = "Volunteer-Run"
+  span   = "Community powered"
 
 [taxonomies]
   category = "categories"
@@ -54,9 +75,9 @@ style = "monokai"
 
 # Menu links
 [[menu.main]]
-  name = "Register now!"
+  name = "Tickets on sale July 1st!"
   weight = 1
-  url = "https://www.eventbrite.com/e/midwest-tech-conference-2025-tickets-1405626569909"
+  url = "https://mwtc2026.eventbrite.com"
   target = "_blank"
 [[menu.main]]
   name = "Schedule"

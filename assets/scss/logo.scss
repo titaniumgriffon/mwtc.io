@@ -7,16 +7,3 @@
         width: 17rem;
     }
 }
-
-.frontpage-logo-container {
-    float: right; /* Floats the container to the right */
-    width: 20%; /* Container takes 20% of parent width */
-    margin-left: 1rem; /* Adds breathing room from main content */
-    text-align: center; /* Centers the image horizontally */
-}
-
-.frontpage-logo-container img {
-    width: 100%; /* Image fills container width */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Removes inline spacing */
-}
