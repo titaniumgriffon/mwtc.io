@@ -17,7 +17,7 @@ style = "monokai"
 [params]
   mainTitle = "MWTC"
   subtitle = "Midwest Tech Conference"
-  eventDate = "October 8th, 2026"
+  eventDate = "October 7th, 2026"
   eventTime = "8am to 5pm"
   eventLocation = "Location TBD"
   description = "A tech conference for the people"
