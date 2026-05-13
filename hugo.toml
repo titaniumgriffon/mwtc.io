@@ -75,9 +75,9 @@ style = "monokai"
 
 # Menu links
 [[menu.main]]
-  name = "Tickets on sale May 1st!"
+  name = "Tickets on sale July 1st!"
   weight = 1
-  url = "https://www.eventbrite.com/e/mid-west-tech-conference-2026-tickets-1983590577815"
+  url = "https://mwtc2026.eventbrite.com"
   target = "_blank"
 [[menu.main]]
   name = "Schedule"
