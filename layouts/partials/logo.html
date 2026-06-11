@@ -1,20 +1,15 @@
 {{/* Partial: logo.html
      Renders a sponsor logo linked to its sponsor page.
      Usage from template: {{ partial "logo.html" (dict "Page" . "Params" (dict "name" "Improving" "width" "200")) }}
-     Usage from shortcode: {{ partial "logo.html" . }}  (shortcode passes .Get values)
+     Usage from shortcode: {{ partial "logo.html" (dict "Page" .Page "Params" (dict "name" (.Get "name") "width" (.Get "width"))) }}
 */}}
 {{ $page  := .Page }}
 {{ $name  := "" }}
 {{ $width := "" }}
 
-{{/* Extract parameters depending on context (partial dict vs shortcode) */}}
-{{ if isset . "Params" }}
-  {{ with .Params.name  }}{{ $name  = . }}{{ end }}
-  {{ with .Params.width }}{{ $width = . }}{{ end }}
-{{ else }}
-  {{ with .Get "name"  }}{{ $name  = . }}{{ end }}
-  {{ with .Get "width" }}{{ $width = . }}{{ end }}
-{{ end }}
+{{/* Extract normalized parameters. Shortcodes pass these through layouts/shortcodes/logo.html. */}}
+{{ with .Params.name  }}{{ $name  = . }}{{ end }}
+{{ with .Params.width }}{{ $width = . }}{{ end }}
 
 {{/* Resolve target page */}}
 {{ if $name }}

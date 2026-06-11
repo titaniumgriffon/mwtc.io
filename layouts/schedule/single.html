@@ -23,7 +23,7 @@
       </header>
 
       <section class="session-details">
-        <p><strong>Time:</strong> {{ (time $session.startsAt).Format "3:04 PM" }}</p>
+        <p><strong>Time:</strong> {{ if $session.startsAt }}{{ (time $session.startsAt).Format "3:04 PM" }}{{ else }}To be announced{{ end }}</p>
 
         {{ if $session.room }}
         <p><strong>Room:</strong> {{ $session.room }}</p>
