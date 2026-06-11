@@ -149,6 +149,35 @@ body.colorscheme-dark {
   gap: 1.5rem;
 }
 
+.schedule-announcement {
+  max-width: 72rem;
+  margin: 0 auto 2rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border: 1px solid var(--teal-20);
+  border-radius: 1rem;
+  background: rgba(84, 214, 172, 0.07);
+
+  p {
+    margin: 0.4rem 0;
+  }
+
+  a {
+    color: var(--teal) !important;
+    font-weight: 700;
+  }
+}
+
+.colorscheme-dark .schedule-announcement {
+  background: rgba(84, 214, 172, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .schedule-announcement {
+    background: rgba(84, 214, 172, 0.1);
+  }
+}
+
 .schedule-card {
   display: flex;
   flex-direction: column;
@@ -190,6 +219,12 @@ body.colorscheme-dark {
 .schedule-session-title {
   font-size: 1.8rem;
   margin: 0.5rem 0 1rem;
+}
+
+.schedule-session-subtitle {
+  margin: 0;
+  color: var(--body-fg);
+  opacity: 0.8;
 }
 
 .schedule-speakers {

@@ -1,1 +1,1 @@
-{{ partial "logo.html" . }}
+{{ partial "logo.html" (dict "Page" .Page "Params" (dict "name" (.Get "name") "width" (.Get "width"))) }}
