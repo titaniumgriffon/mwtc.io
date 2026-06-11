@@ -10,12 +10,13 @@
   <h1 class="title schedule-title">Conference Schedule</h1>
 
   <div class="schedule-announcement">
-    <p><strong>To be announced.</strong> The MWTC 2026 schedule is still being finalized.</p>
-    <p>We are currently taking applications for speakers. <a href="https://sessionize.com/mwtc">Submit a talk for consideration.</a></p>
+    <p><strong>Schedule to be announced.</strong> We are actively looking for speakers for MWTC 2026.</p>
+    <p>Speaker applications are open now. <a href="https://sessionize.com/mwtc">Submit a talk for consideration.</a></p>
   </div>
 
   <div class="schedule-container">
     {{ range sort $sessions "startsAt" }}
+    {{ if ne .id "schedule-to-be-announced" }}
     <a class="schedule-card" href="{{ "/schedule/" | relURL }}{{ .id }}">
       <div class="schedule-time">{{ if .startsAt }}{{ (time .startsAt).Format "3:04 PM" }}{{ else }}To be announced{{ end }}</div>
       <h2 class="schedule-session-title">{{ .title }}</h2>
@@ -35,6 +36,7 @@
       </div>
       {{ end }}
     </a>
+    {{ end }}
     {{ end }}
   </div>
 </section>
