@@ -3,8 +3,8 @@
 {{ end }}
 {{ define "content" }}
 
-{{ $sessions  := site.Data.sessions.sessions }}
-{{ $speakers  := site.Data.sessions.speakers }}
+{{ $sessions  := hugo.Data.sessions.sessions }}
+{{ $speakers  := hugo.Data.sessions.speakers }}
 
 <section class="schedule-list">
   <h1 class="title schedule-title">Conference Schedule</h1>
