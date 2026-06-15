@@ -4,8 +4,8 @@
 {{ define "content" }}
 
 
-{{ $sessions := hugo.Data.sessions.sessions }}
-{{ $allSpeakers := hugo.Data.sessions.speakers }}
+{{ $sessions := site.Data.sessions.sessions }}
+{{ $allSpeakers := site.Data.sessions.speakers }}
 {{ $session := index (where $sessions "id" .File.BaseFileName) 0 }}
 
 {{ if $session }}

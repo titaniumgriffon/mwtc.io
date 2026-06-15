@@ -1,4 +1,4 @@
-locale = 'en-us'
+languageCode = 'en-us'
 title = "Midwest Tech Conference"
 
 theme = "hugo-coder"
