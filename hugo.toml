@@ -5,7 +5,7 @@ theme = "hugo-coder"
 defaultcontentlanguage = "en"
 
 [build]
-hugo_version = "0.149.0"
+hugo_version = "0.163.1"
 
 [pagination]
 pagerSize = 20
@@ -45,7 +45,7 @@ style = "monokai"
 #  name = "Call for Papers"
 #  icon = "fa fa-2x fa-commenting"
 #  weight = 2
-#  url = "https://sessionize.com/mwtc"
+#  url = "https://sessionize.com/mwtc-2026/"
 
 [[params.valueProps]]
   icon   = "fa-solid fa-ticket"
