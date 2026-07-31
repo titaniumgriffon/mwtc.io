@@ -157,6 +157,16 @@ body.colorscheme-dark {
   }
 }
 
+.colorscheme-dark .sponsor-card-logo {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .sponsor-card-logo {
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
 .sponsor-card-logo-fallback {
   font-size: 1.8rem;
   font-weight: 700;
