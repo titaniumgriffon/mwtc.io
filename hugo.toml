@@ -5,7 +5,7 @@ theme = "hugo-coder"
 defaultcontentlanguage = "en"
 
 [build]
-hugo_version = "0.163.1"
+hugo_version = "0.164.0"
 
 [pagination]
 pagerSize = 20
