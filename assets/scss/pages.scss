@@ -199,6 +199,28 @@ body.colorscheme-dark {
   text-align: center;
 }
 
+.sponsor-card-cta .sponsor-card-link {
+  border-style: dashed;
+  border-color: var(--teal-30);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    border-color: var(--teal);
+    background: var(--teal-15);
+  }
+}
+
+.sponsor-card-logo.sponsor-cta-icon {
+  background: none;
+
+  i {
+    font-size: 2.4rem;
+    color: var(--teal);
+  }
+}
+
 // ─── Schedule List ───────────────────────────────────────────────────────────
 
 .schedule-list {
