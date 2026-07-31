@@ -1,3 +1,16 @@
-<li>
-  <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+<li class="sponsor-card">
+  <a class="sponsor-card-link" href="{{ .Params.externalLink | default .RelPermalink }}">
+    <div class="sponsor-card-logo">
+      {{ with .Params.logo }}
+        <img src="{{ . | relURL }}" alt="{{ $.Params.logo_alt | default $.Title }}" loading="lazy">
+      {{ else }}
+        <span class="sponsor-card-logo-fallback">{{ $.Title }}</span>
+      {{ end }}
+    </div>
+    <div class="sponsor-card-body">
+      <h3 class="sponsor-card-title">{{ .Title }}</h3>
+      {{ with .Params.level }}<span class="sponsor-card-tier">{{ . }}</span>{{ end }}
+      {{ with .Summary | plainify }}<p class="sponsor-card-excerpt">{{ . }}</p>{{ end }}
+    </div>
+  </a>
 </li>
