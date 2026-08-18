@@ -32,7 +32,7 @@ style = "monokai"
   colorScheme = "auto"
   hidecolorschemetoggle = false
 
-  customSCSS = ['scss/variables.scss', 'scss/logo.scss', 'scss/article.scss', 'scss/hero.scss', 'scss/pages.scss']
+  customSCSS = ['scss/variables.scss', 'scss/logo.scss', 'scss/hero.scss', 'scss/pages.scss']
   customJS = ['js/countdown.js']
 
 #[[params.links]]
