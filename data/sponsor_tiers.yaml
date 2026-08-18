@@ -1,0 +1,61 @@
+# Sponsorship tier benefits shown on the Sponsors page.
+# Edit here to change pricing/benefits without touching layouts/sponsors/list.html.
+#
+# `limit`, when set, is the number of spots in that tier; the page counts
+# sponsor pages with a matching `level` against it and shows spots remaining.
+# Omit `limit` for an uncapped tier (e.g. Friend).
+
+- name: Platinum
+  price: "$1,500"
+  tagline: Top billing across the whole event
+  featured: true
+  limit: 3
+  benefits:
+    - Largest logo placement on event signage, website, and step-and-repeat backdrop
+    - Verbal shoutout during opening and closing remarks
+    - Vendor table in a high-traffic area
+    - Logo featured on attendee badges or lanyards
+    - 4 complimentary tickets
+    - Dedicated spotlight post on MWTC social media
+    - Logo included in the post-event thank-you email to all attendees
+
+- name: Gold
+  price: "$1,000"
+  tagline: Strong visibility with a vendor table
+  featured: false
+  limit: 4
+  benefits:
+    - Logo on event signage and website
+    - Vendor table
+    - 2 complimentary tickets
+    - Mention in an MWTC social media post
+    - Logo on the sponsor slide shown between sessions
+
+- name: Silver
+  price: "$750"
+  tagline: Great way to get your name in front of attendees
+  featured: false
+  limit: 10
+  benefits:
+    - Logo on website and the sponsor slide shown between sessions
+    - 1 complimentary ticket
+    - Mention in an MWTC social media post
+    - Listed in the event program
+
+- name: Bronze
+  price: "$500"
+  tagline: A simple way to support the community
+  featured: false
+  limit: 15
+  benefits:
+    - Logo on the website sponsors page
+    - Listed in the event program
+    - Thank-you mention on MWTC social media
+
+- name: Friend
+  price: "Any amount"
+  tagline: For businesses and individuals who want to help out, however much that looks like
+  featured: false
+  benefits:
+    - Name listed on the website sponsors page
+    - Thank-you mention on MWTC social media

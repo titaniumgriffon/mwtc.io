@@ -100,6 +100,168 @@ body.colorscheme-dark {
   }
 }
 
+// ─── Sponsors page width ───────────────────────────────────────────────────────
+// The theme's .container caps at 90rem (900px). That felt cramped once the old
+// fixed-width sidebar was removed, so widen just the sponsors page to ~75% of
+// the viewport on larger screens, capped so lines don't get unreadably long.
+
+@media (min-width: 120rem) {
+  .container.list {
+    max-width: 75vw;
+  }
+}
+
+// Beyond this point 75vw would exceed the readable-line-length cap, so hold
+// the container at a fixed width instead of letting it keep growing.
+@media (min-width: 213.4rem) {
+  .container.list {
+    max-width: 160rem;
+  }
+}
+
+// ─── Sponsor tiers ────────────────────────────────────────────────────────────
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 2rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.tier-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 1px solid var(--teal-15);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.colorscheme-dark .tier-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .tier-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.tier-card-featured {
+  border-color: var(--teal-on-bg);
+  box-shadow: 0 6px 20px rgba(84, 214, 172, 0.2);
+}
+
+.tier-card-badge {
+  position: absolute;
+  top: -0.9rem;
+  right: 1.5rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--teal);
+  color: var(--navy);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tier-card-name {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.tier-card-price {
+  margin: 0.3rem 0 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--teal-on-bg);
+}
+
+.tier-card-tagline {
+  margin: 0.4rem 0 1rem;
+  opacity: 0.8;
+  font-size: 1.4rem;
+}
+
+.tier-card-spots {
+  margin: 0 0 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--teal-on-bg);
+}
+
+.tier-card-spots-full {
+  // --body-fg isn't a defined token anywhere in this codebase; var() with an
+  // undefined custom property falls back to the inherited color on an
+  // inherited property like `color`, which happens to be what we want here,
+  // but rely on that explicitly instead of a token that looks defined but isn't.
+  color: inherit;
+  opacity: 0.6;
+}
+
+// Scoped under .container.list (not just .tier-card-benefits) to out-specificity
+// the theme's ".list ul"/".list ul li" rules and our own ".container.list ul"
+// rule below, which would otherwise turn this into a bulletless grid at 1.8rem.
+.container.list .tier-card-benefits {
+  display: block;
+  flex: 1;
+  margin: 0 0 1.5rem;
+  padding-left: 1.4rem;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  list-style: disc;
+
+  li {
+    display: list-item;
+    margin: 0 0 0.6rem;
+    font-size: 1.4rem;
+  }
+}
+
+.tier-card-cta {
+  display: block;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--teal-on-bg);
+  color: var(--teal-on-bg) !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--teal);
+    color: var(--navy) !important;
+  }
+}
+
+.tier-payment-note {
+  font-size: 1.4rem;
+  opacity: 0.85;
+  margin-bottom: 3rem;
+
+  a {
+    // !important needed to beat the theme's body.colorscheme-dark a rule,
+    // which otherwise wins on specificity in dark mode.
+    color: var(--teal-on-bg) !important;
+
+    &:hover,
+    &:focus {
+      color: var(--teal-hover) !important;
+    }
+  }
+}
+
+.sponsors-section-title {
+  font-size: 2.2rem;
+  border-top: 1px solid var(--teal-15);
+  padding-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+
 // ─── Sponsors list ────────────────────────────────────────────────────────────
 
 .container.list ul {
@@ -170,7 +332,9 @@ body.colorscheme-dark {
 .sponsor-card-logo-fallback {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--teal);
+  // Always the dark variant: this sits on the near-white logo box in both
+  // schemes, not on body-bg, so it shouldn't follow --teal-on-bg's swap.
+  color: var(--teal-dark);
   text-align: center;
 }
 
@@ -187,7 +351,7 @@ body.colorscheme-dark {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-on-bg);
   margin-bottom: 1rem;
 }
 
@@ -217,7 +381,7 @@ body.colorscheme-dark {
 
   i {
     font-size: 2.4rem;
-    color: var(--teal);
+    color: var(--teal-on-bg);
   }
 }
 
