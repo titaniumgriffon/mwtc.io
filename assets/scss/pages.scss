@@ -185,15 +185,22 @@ body.colorscheme-dark {
   font-size: 1.4rem;
 }
 
-.tier-card-benefits {
+// Scoped under .container.list (not just .tier-card-benefits) to out-specificity
+// the theme's ".list ul"/".list ul li" rules and our own ".container.list ul"
+// rule below, which would otherwise turn this into a bulletless grid at 1.8rem.
+.container.list .tier-card-benefits {
+  display: block;
   flex: 1;
   margin: 0 0 1.5rem;
   padding-left: 1.4rem;
   font-size: 1.4rem;
   line-height: 1.6;
+  list-style: disc;
 
   li {
-    margin-bottom: 0.6rem;
+    display: list-item;
+    margin: 0 0 0.6rem;
+    font-size: 1.4rem;
   }
 }
 
