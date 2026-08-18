@@ -10,32 +10,7 @@
     </header>
     {{ .Content }}
 
-    <div class="tier-grid">
-        {{ range site.Data.sponsor_tiers }}
-        <div class="tier-card{{ if .featured }} tier-card-featured{{ end }}">
-            {{ if .featured }}<div class="tier-card-badge">Best Value</div>{{ end }}
-            <h2 class="tier-card-name">{{ .name }}</h2>
-            <p class="tier-card-price">{{ .price }}</p>
-            <p class="tier-card-tagline">{{ .tagline }}</p>
-            <ul class="tier-card-benefits">
-                {{ range .benefits }}<li>{{ . }}</li>{{ end }}
-            </ul>
-            <a class="tier-card-cta" href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20{{ .name }}%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D">
-                Become a {{ .name }} Sponsor
-            </a>
-        </div>
-        {{ end }}
-    </div>
-
-    <p class="tier-payment-note">
-        Paying by card? Sign up on
-        <a href="https://www.zeffy.com/en-US/ticketing/midwest-tech-conference--2026">Zeffy</a>.
-        Other payment options are available &mdash;
-        <a href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20I%20am%20interested%20in%20the%20%5BPlatinum%2FGold%2FSilver%2FBronze%5D%20tier.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D">contact us</a>
-        to discuss your sponsorship package.
-    </p>
-
-    <h2 class="sponsors-directory-title">Our Sponsors</h2>
+    <h2 class="sponsors-section-title">Our Sponsors</h2>
 
     {{ $tierOrder := slice "Platinum" "Gold" "Silver" "Bronze" }}
     {{ $sorted := slice }}
@@ -64,5 +39,32 @@
           </a>
         </li>
     </ul>
+
+    <h2 class="sponsors-section-title">Sponsorship Packages</h2>
+
+    <div class="tier-grid">
+        {{ range site.Data.sponsor_tiers }}
+        <div class="tier-card{{ if .featured }} tier-card-featured{{ end }}">
+            {{ if .featured }}<div class="tier-card-badge">Best Value</div>{{ end }}
+            <h2 class="tier-card-name">{{ .name }}</h2>
+            <p class="tier-card-price">{{ .price }}</p>
+            <p class="tier-card-tagline">{{ .tagline }}</p>
+            <ul class="tier-card-benefits">
+                {{ range .benefits }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            <a class="tier-card-cta" href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20{{ .name }}%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D">
+                Become a {{ .name }} Sponsor
+            </a>
+        </div>
+        {{ end }}
+    </div>
+
+    <p class="tier-payment-note">
+        Paying by card? Sign up on
+        <a href="https://www.zeffy.com/en-US/ticketing/midwest-tech-conference--2026">Zeffy</a>.
+        Other payment options are available &mdash;
+        <a href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20I%20am%20interested%20in%20the%20%5BPlatinum%2FGold%2FSilver%2FBronze%5D%20tier.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D">contact us</a>
+        to discuss your sponsorship package.
+    </p>
 </section>
 {{ end }}

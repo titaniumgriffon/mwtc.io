@@ -100,6 +100,25 @@ body.colorscheme-dark {
   }
 }
 
+// ─── Sponsors page width ───────────────────────────────────────────────────────
+// The theme's .container caps at 90rem (900px). That felt cramped once the old
+// fixed-width sidebar was removed, so widen just the sponsors page to ~75% of
+// the viewport on larger screens, capped so lines don't get unreadably long.
+
+@media (min-width: 120rem) {
+  .container.list {
+    max-width: 75vw;
+  }
+}
+
+// Beyond this point 75vw would exceed the readable-line-length cap, so hold
+// the container at a fixed width instead of letting it keep growing.
+@media (min-width: 213.4rem) {
+  .container.list {
+    max-width: 160rem;
+  }
+}
+
 // ─── Sponsor tiers ────────────────────────────────────────────────────────────
 
 .tier-grid {
@@ -211,7 +230,7 @@ body.colorscheme-dark {
   }
 }
 
-.sponsors-directory-title {
+.sponsors-section-title {
   font-size: 2.2rem;
   border-top: 1px solid var(--teal-15);
   padding-top: 2.5rem;
