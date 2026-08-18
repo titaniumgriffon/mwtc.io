@@ -12,7 +12,7 @@
 
     <h2 class="sponsors-section-title">Our Sponsors</h2>
 
-    {{ $tierOrder := slice "Platinum" "Gold" "Silver" "Bronze" }}
+    {{ $tierOrder := slice "Platinum" "Gold" "Silver" "Bronze" "Friend" }}
     {{ $sorted := slice }}
     {{ range $tierOrder }}
         {{ $sorted = $sorted | append (sort (where $.Pages "Params.level" .) "Title") }}
@@ -44,11 +44,19 @@
 
     <div class="tier-grid">
         {{ range site.Data.sponsor_tiers }}
-        <div class="tier-card{{ if .featured }} tier-card-featured{{ end }}">
-            {{ if .featured }}<div class="tier-card-badge">Best Value</div>{{ end }}
-            <h2 class="tier-card-name">{{ .name }}</h2>
-            <p class="tier-card-price">{{ .price }}</p>
-            <p class="tier-card-tagline">{{ .tagline }}</p>
+        {{ $tier := . }}
+        <div class="tier-card{{ if $tier.featured }} tier-card-featured{{ end }}">
+            {{ if $tier.featured }}<div class="tier-card-badge">Best Value</div>{{ end }}
+            <h2 class="tier-card-name">{{ $tier.name }}</h2>
+            <p class="tier-card-price">{{ $tier.price }}</p>
+            <p class="tier-card-tagline">{{ $tier.tagline }}</p>
+            {{ with $tier.limit }}
+                {{ $taken := len (where $.Pages "Params.level" $tier.name) }}
+                {{ $remaining := sub . $taken }}
+                <p class="tier-card-spots{{ if le $remaining 0 }} tier-card-spots-full{{ end }}">
+                    {{ if gt $remaining 0 }}{{ $remaining }} of {{ . }} spots available{{ else }}All spots reserved{{ end }}
+                </p>
+            {{ end }}
             <ul class="tier-card-benefits">
                 {{ range .benefits }}<li>{{ . }}</li>{{ end }}
             </ul>

@@ -4,6 +4,7 @@ date = 2025-06-12T00:00:00Z
 title = 'Mid-MO Technology Group'
 logo = "/images/MMTG_logo.png"
 logo_alt = "Mid-MO Technology Group Logo"
+level = 'Friend'
 +++
 
 {{< logo >}}

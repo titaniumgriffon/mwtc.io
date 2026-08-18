@@ -4,6 +4,7 @@ date = 2026-07-30T00:00:00Z
 title = 'Veterans United Home Loans'
 logo = "/images/VUHL_Stacked.svg"
 logo_alt = "Veterans United Home Loans Logo"
+level = 'Friend'
 +++
 
 {{< logo >}}
