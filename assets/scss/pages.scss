@@ -149,7 +149,7 @@ body.colorscheme-dark {
 }
 
 .tier-card-featured {
-  border-color: var(--teal);
+  border-color: var(--teal-on-bg);
   box-shadow: 0 6px 20px rgba(84, 214, 172, 0.2);
 }
 
@@ -176,7 +176,7 @@ body.colorscheme-dark {
   margin: 0.3rem 0 0;
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--teal-on-bg);
 }
 
 .tier-card-tagline {
@@ -189,11 +189,15 @@ body.colorscheme-dark {
   margin: 0 0 1.5rem;
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--teal-on-bg);
 }
 
 .tier-card-spots-full {
-  color: var(--body-fg);
+  // --body-fg isn't a defined token anywhere in this codebase; var() with an
+  // undefined custom property falls back to the inherited color on an
+  // inherited property like `color`, which happens to be what we want here,
+  // but rely on that explicitly instead of a token that looks defined but isn't.
+  color: inherit;
   opacity: 0.6;
 }
 
@@ -221,8 +225,8 @@ body.colorscheme-dark {
   text-align: center;
   padding: 0.8rem 1rem;
   border-radius: 0.6rem;
-  border: 1px solid var(--teal);
-  color: var(--teal) !important;
+  border: 1px solid var(--teal-on-bg);
+  color: var(--teal-on-bg) !important;
   font-weight: 700;
   text-decoration: none !important;
   transition: background 0.2s ease, color 0.2s ease;
@@ -240,11 +244,13 @@ body.colorscheme-dark {
   margin-bottom: 3rem;
 
   a {
-    color: var(--teal);
+    // !important needed to beat the theme's body.colorscheme-dark a rule,
+    // which otherwise wins on specificity in dark mode.
+    color: var(--teal-on-bg) !important;
 
     &:hover,
     &:focus {
-      color: var(--teal-hover);
+      color: var(--teal-hover) !important;
     }
   }
 }
@@ -326,7 +332,9 @@ body.colorscheme-dark {
 .sponsor-card-logo-fallback {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--teal);
+  // Always the dark variant: this sits on the near-white logo box in both
+  // schemes, not on body-bg, so it shouldn't follow --teal-on-bg's swap.
+  color: var(--teal-dark);
   text-align: center;
 }
 
@@ -343,7 +351,7 @@ body.colorscheme-dark {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-on-bg);
   margin-bottom: 1rem;
 }
 
@@ -373,7 +381,7 @@ body.colorscheme-dark {
 
   i {
     font-size: 2.4rem;
-    color: var(--teal);
+    color: var(--teal-on-bg);
   }
 }
 

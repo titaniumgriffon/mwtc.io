@@ -47,7 +47,7 @@
         {{ $tier := . }}
         <div class="tier-card{{ if $tier.featured }} tier-card-featured{{ end }}">
             {{ if $tier.featured }}<div class="tier-card-badge">Best Value</div>{{ end }}
-            <h2 class="tier-card-name">{{ $tier.name }}</h2>
+            <h3 class="tier-card-name">{{ $tier.name }}</h3>
             <p class="tier-card-price">{{ $tier.price }}</p>
             <p class="tier-card-tagline">{{ $tier.tagline }}</p>
             {{ with $tier.limit }}

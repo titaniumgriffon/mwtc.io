@@ -40,6 +40,13 @@ body.colorscheme-auto {
   // Logo display
   --logo-light-display: block;
   --logo-dark-display:  none;
+
+  // Teal text/borders directly on body-bg (no opaque card behind them) need a
+  // darker shade here — plain --teal on this background is ~1.1:1 contrast.
+  // Darker than --teal-dark (which is tuned for icons, only needing 3:1):
+  // small/bold text needs the stricter 4.5:1 AA ratio, which this clears
+  // (~4.8:1) against --body-bg below.
+  --teal-on-bg: #195b47;
 }
 
 // ─── Dark mode ────────────────────────────────────────────────────────────────
@@ -65,6 +72,8 @@ body.colorscheme-dark {
 
   --logo-light-display: none;
   --logo-dark-display:  block;
+
+  --teal-on-bg: var(--teal);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,5 +98,7 @@ body.colorscheme-dark {
 
     --logo-light-display: none;
     --logo-dark-display:  block;
+
+    --teal-on-bg: var(--teal);
   }
 }
