@@ -262,6 +262,39 @@ body.colorscheme-dark {
   margin-bottom: 2rem;
 }
 
+// ─── Sponsor value prop ────────────────────────────────────────────────────────
+
+.value-prop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.value-prop-card {
+  padding: 2rem;
+  border: 1px solid var(--teal-15);
+  border-radius: 1rem;
+}
+
+.value-prop-icon {
+  font-size: 1.8rem;
+  color: var(--teal-on-bg);
+  margin-bottom: 1rem;
+}
+
+.value-prop-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.7rem;
+}
+
+.value-prop-body {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
 // ─── Sponsors list ────────────────────────────────────────────────────────────
 
 .container.list ul {
