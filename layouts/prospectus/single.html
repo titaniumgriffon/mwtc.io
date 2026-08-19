@@ -1,0 +1,81 @@
+{{ define "title" }} {{ .Title }} · {{ .Site.Title }} {{ end }}
+{{ define "content" }}
+<section class="container prospectus">
+    <div class="prospectus-actions">
+        <a class="prospectus-back-link" href="{{ "sponsors" | relURL }}">&larr; Back to Sponsors</a>
+        <button type="button" class="prospectus-print-btn" onclick="window.print()">
+            <i class="fa-solid fa-print" aria-hidden="true"></i> Print / Save as PDF
+        </button>
+    </div>
+
+    <header class="prospectus-header">
+        <p class="prospectus-eyebrow">Sponsorship Prospectus</p>
+        <h1 class="prospectus-title">{{ .Site.Params.subtitle | default .Site.Title }}</h1>
+        <div class="prospectus-meta">
+            <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> {{ .Site.Params.eventDate }}</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> {{ .Site.Params.eventTime }}</span>
+            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ .Site.Params.eventLocation }}</span>
+        </div>
+    </header>
+
+    {{ .Content }}
+
+    <h2 class="sponsors-section-title">Why Sponsor MWTC?</h2>
+
+    <div class="value-prop-grid">
+        <div class="value-prop-card">
+            <i class="fa-solid fa-users value-prop-icon" aria-hidden="true"></i>
+            <h3 class="value-prop-title">Reach Local Tech Talent</h3>
+            <p class="value-prop-body">Connect with Mid-Missouri developers, sysadmins, IT leaders, and Mizzou students who show up because they want to talk shop &mdash; a warm audience for recruiting.</p>
+        </div>
+        <div class="value-prop-card">
+            <i class="fa-solid fa-bullhorn value-prop-icon" aria-hidden="true"></i>
+            <h3 class="value-prop-title">Build Brand Visibility</h3>
+            <p class="value-prop-body">Your logo on signage, the website, and social media puts your organization in front of the region's tech community as it grows.</p>
+        </div>
+        <div class="value-prop-card">
+            <i class="fa-solid fa-hand-holding-heart value-prop-icon" aria-hidden="true"></i>
+            <h3 class="value-prop-title">Support the Community</h3>
+            <p class="value-prop-body">MWTC is volunteer-run and non-profit. Sponsorships keep tickets affordable, students free, and any surplus is returned to sponsors or donated.</p>
+        </div>
+    </div>
+
+    <h2 class="sponsors-section-title">Sponsorship Packages</h2>
+
+    <table class="prospectus-tier-table">
+        <thead>
+            <tr>
+                <th>Tier</th>
+                <th>Price</th>
+                <th>Benefits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range site.Data.sponsor_tiers }}
+            <tr>
+                <td>
+                    <span class="prospectus-tier-name">{{ .name }}</span>
+                    <span class="prospectus-tier-tagline">{{ .tagline }}</span>
+                    {{ with .limit }}<span class="prospectus-tier-limit">{{ . }} spots</span>{{ end }}
+                </td>
+                <td class="prospectus-tier-price">{{ .price }}</td>
+                <td>
+                    <ul>
+                        {{ range .benefits }}<li>{{ . }}</li>{{ end }}
+                    </ul>
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+
+    <h2 class="sponsors-section-title">Get in Touch</h2>
+
+    <p class="prospectus-contact">
+        Ready to sponsor, or want to put together something custom or in-kind? Email
+        <a href="mailto:sponsor@mwtc.io?subject=Sponsor%20Opportunity&body=Hello!%20%0A%0AI%20would%20like%20to%20discuss%20becoming%20a%20sponsor%20for%20the%20Mid-West%20Tech%20Conference.%20I%20am%20interested%20in%20the%20%5BPlatinum%2FGold%2FSilver%2FBronze%5D%20tier.%20%0A%0AI%20can%20be%20reached%20at%20%5Bphone%20or%20email%5D">sponsor@mwtc.io</a>
+        &mdash; or find full sponsor details at
+        <a href="{{ absURL "sponsors" }}">{{ absURL "sponsors" }}</a>.
+    </p>
+</section>
+{{ end }}

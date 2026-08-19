@@ -672,3 +672,154 @@ body.colorscheme-dark {
     flex: 1 1 100%;
   }
 }
+
+// ─── Sponsorship prospectus ─────────────────────────────────────────────────────
+// A printable one-pager: same design tokens as the sponsors page, but built to
+// also work as a physical/PDF handout via the @media print block below.
+
+.prospectus-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.prospectus-back-link {
+  color: var(--teal-on-bg) !important;
+  font-weight: 600;
+  text-decoration: none !important;
+
+  &:hover,
+  &:focus {
+    color: var(--teal-hover) !important;
+  }
+}
+
+.prospectus-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--teal-on-bg);
+  background: transparent;
+  color: var(--teal-on-bg);
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--teal);
+    color: var(--navy);
+  }
+}
+
+.prospectus-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.prospectus-eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--teal-on-bg);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prospectus-title {
+  margin: 0 0 1.2rem;
+  font-size: 3rem;
+}
+
+.prospectus-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2.5rem;
+  font-size: 1.5rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  i {
+    color: var(--teal-on-bg);
+  }
+}
+
+.prospectus-tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0 2.5rem;
+  font-size: 1.4rem;
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--teal-15);
+  }
+
+  th {
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--teal-on-bg);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.4rem;
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+.prospectus-tier-name {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.prospectus-tier-tagline {
+  display: block;
+  opacity: 0.8;
+}
+
+.prospectus-tier-limit {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--teal-on-bg);
+  font-weight: 700;
+}
+
+.prospectus-tier-price {
+  font-weight: 700;
+  color: var(--teal-on-bg);
+  white-space: nowrap;
+}
+
+.prospectus-contact {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+
+  a {
+    color: var(--teal-on-bg) !important;
+
+    &:hover,
+    &:focus {
+      color: var(--teal-hover) !important;
+    }
+  }
+}

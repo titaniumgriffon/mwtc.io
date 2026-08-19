@@ -62,6 +62,11 @@
 
     <h2 class="sponsors-section-title">Sponsorship Packages</h2>
 
+    <p class="tier-payment-note">
+        Sharing this with someone else at your company?
+        <a href="{{ "prospectus" | relURL }}">View the printable sponsorship prospectus</a>.
+    </p>
+
     <div class="tier-grid">
         {{ range site.Data.sponsor_tiers }}
         {{ $tier := . }}
