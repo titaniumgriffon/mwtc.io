@@ -547,66 +547,6 @@ body.colorscheme-dark {
   gap: 0.8rem;
 }
 
-// ─── Loading Skeletons ───────────────────────────────────────────────────────
-
-#schedule-skeleton[hidden] {
-  display: none;
-}
-
-.skeleton-bar {
-  border-radius: 0.4rem;
-  background: linear-gradient(
-    90deg,
-    var(--teal-15) 25%,
-    var(--teal-30) 37%,
-    var(--teal-15) 63%
-  );
-  background-size: 400% 100%;
-  animation: skeleton-pulse 1.4s ease infinite;
-}
-
-@keyframes skeleton-pulse {
-  0% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
-
-.schedule-card-skeleton {
-  cursor: default;
-
-  .skeleton-time {
-    width: 8rem;
-    height: 1.6rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .skeleton-title {
-    width: 70%;
-    height: 1.8rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .skeleton-subtitle {
-    width: 45%;
-    height: 1.2rem;
-  }
-}
-
-.skeleton-session-title {
-  width: 60%;
-  height: 2.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.skeleton-session-line {
-  width: 30%;
-  height: 1.4rem;
-  margin-bottom: 1rem;
-}
-
 .speaker-inline {
   display: flex;
   align-items: center;

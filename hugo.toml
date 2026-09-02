@@ -7,6 +7,10 @@ defaultcontentlanguage = "en"
 [build]
 hugo_version = "0.164.0"
 
+[caches]
+  [caches.getresource]
+    maxAge = "10s"
+
 [pagination]
 pagerSize = 20
 

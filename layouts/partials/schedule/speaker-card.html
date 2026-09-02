@@ -1,0 +1,23 @@
+{{/* Renders one speaker's large photo card in a session detail page sidebar.
+     Expects: a speaker map from the Sessionize view API. */}}
+{{ $link := "" }}
+{{ range .links }}{{ if eq .linkType "Sessionize" }}{{ $link = .url }}{{ end }}{{ end }}
+
+<div class="speaker-card">
+  {{ if $link }}<a href="{{ $link }}">{{ end }}
+    <figure>
+      {{ if .profilePicture }}
+        <img src="{{ .profilePicture }}" alt="{{ .fullName }}" class="speaker-photo">
+      {{ else }}
+        {{ $parts := split .fullName " " }}
+        {{ $first := substr (index $parts 0) 0 1 }}
+        {{ $last  := "" }}
+        {{ if gt (len $parts) 1 }}
+          {{ $last = substr (index $parts (sub (len $parts) 1)) 0 1 }}
+        {{ end }}
+        <div class="speaker-initials">{{ printf "%s%s" $first $last }}</div>
+      {{ end }}
+      <figcaption>{{ .fullName }}</figcaption>
+    </figure>
+  {{ if $link }}</a>{{ end }}
+</div>

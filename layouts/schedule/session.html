@@ -1,50 +1,32 @@
 {{ define "title" }}
-  {{ title (i18n (lower .Title)) | default .Title }} · {{ .Site.Title }}
+  {{ .Title }} · {{ .Site.Title }}
 {{ end }}
 {{ define "content" }}
 
-<div id="session-skeleton" class="session-page" aria-hidden="true">
-  <div class="session-container">
-    <main class="session-main">
-      <div class="skeleton-bar skeleton-session-title"></div>
-      <div class="skeleton-bar skeleton-session-line"></div>
-      <div class="skeleton-bar skeleton-session-line"></div>
-      <div class="skeleton-bar skeleton-session-line"></div>
-    </main>
-  </div>
-</div>
-
-<div id="session-not-found" class="schedule-announcement" hidden>
-  <p><strong>We couldn't find that session.</strong> It may not be confirmed yet, or the link may be out of date.</p>
-  <p><a href="{{ "/schedule/" | relURL }}">Back to the schedule</a></p>
-</div>
-
-<div id="session-error" class="schedule-announcement" hidden>
-  <p><strong>We couldn't load this session right now.</strong> Please refresh the page or check back shortly.</p>
-</div>
-
-<article id="session-detail" class="session-page" hidden>
+<article id="session-detail" class="session-page" data-session-id="{{ .Params.sessionId }}">
   <div class="session-container">
 
     <main class="session-main">
       <header class="session-header">
-        <h1 id="session-title" class="session-title"></h1>
+        <h1 id="session-title" class="session-title">{{ .Title }}</h1>
       </header>
 
       <section class="session-details">
-        <p><strong>Time:</strong> <span id="session-time"></span></p>
+        <p><strong>Time:</strong> <span id="session-time">{{ .Params.displayTime }}</span></p>
 
-        <p id="session-room-row" hidden><strong>Room:</strong> <span id="session-room"></span></p>
+        <p id="session-room-row" {{ if not .Params.room }}hidden{{ end }}>
+          <strong>Room:</strong> <span id="session-room">{{ .Params.room }}</span>
+        </p>
 
-        <p id="session-speakers-row" hidden>
-          <strong id="session-speakers-label"></strong>
-          <span id="session-speakers"></span>
+        <p id="session-speakers-row" {{ if not .Params.speakers }}hidden{{ end }}>
+          <strong id="session-speakers-label">{{ if gt (len .Params.speakers) 1 }}Speakers:{{ else }}Speaker:{{ end }}</strong>
+          <span id="session-speakers">{{ range $i, $s := .Params.speakers }}{{ if $i }}, {{ end }}{{ $s.fullName }}{{ end }}</span>
         </p>
       </section>
 
-      <section id="session-description" class="session-description" hidden>
+      <section id="session-description" class="session-description" {{ if not .Content }}hidden{{ end }}>
         <h3>Description</h3>
-        <div class="session-description-body"></div>
+        <div class="session-description-body">{{ .Content }}</div>
       </section>
 
       <footer class="session-footer">
@@ -52,9 +34,13 @@
       </footer>
     </main>
 
-    <aside id="session-sidebar" class="session-sidebar" hidden>
-      <h3 id="session-sidebar-label"></h3>
-      <div id="session-speaker-photos" class="speaker-photos"></div>
+    <aside id="session-sidebar" class="session-sidebar" {{ if not .Params.speakers }}hidden{{ end }}>
+      <h3 id="session-sidebar-label">{{ if gt (len .Params.speakers) 1 }}Speakers{{ else }}Speaker{{ end }}</h3>
+      <div id="session-speaker-photos" class="speaker-photos">
+        {{ range .Params.speakers }}
+          {{ partial "schedule/speaker-card.html" . }}
+        {{ end }}
+      </div>
     </aside>
 
   </div>

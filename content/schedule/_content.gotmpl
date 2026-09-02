@@ -1,0 +1,86 @@
+{{/* Generates one static page per Sessionize session (confirmed talks and
+     all service sessions) so each has real content and correct browser
+     titles / Open Graph / Twitter Card previews when shared. Client-side JS
+     (assets/js/schedule.js) re-fetches Sessionize on page load and patches
+     these pages in place if anything changed since this build, so
+     confirmations/time changes/edits show up without a rebuild. */}}
+
+{{ $url := "https://sessionize.com/api/v2/c2u6te92/view/All" }}
+{{ $data := dict }}
+
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Err }}
+    {{ errorf "Unable to fetch Sessionize schedule data: %s" . }}
+  {{ else with .Value }}
+    {{ $data = . | transform.Unmarshal }}
+  {{ end }}
+{{ end }}
+
+{{ $speakers := $data.speakers }}
+{{ $rooms := $data.rooms }}
+
+{{ range $data.sessions }}
+  {{ if or .isConfirmed .isServiceSession }}
+
+    {{ $room := "" }}
+    {{ with (where $rooms "id" .roomId) }}
+      {{ $room = (index . 0).name }}
+    {{ end }}
+
+    {{ $sessionSpeakers := where $speakers "id" "in" .speakers }}
+
+    {{/* Sessionize returns startsAt as a timezone-less wall-clock string
+         representing Central time in Columbia, MO. The hour/minute are read
+         directly out of the string so this can't be reinterpreted in
+         whatever timezone the build runs in. */}}
+    {{ $displayTime := "To be announced" }}
+    {{ with .startsAt }}
+      {{/* int treats a leading-zero string like "08" as octal and errors,
+           so the leading zero is stripped before casting. */}}
+      {{ $hourDigits := strings.TrimLeft "0" (substr . 11 2) }}
+      {{ if eq $hourDigits "" }}{{ $hourDigits = "0" }}{{ end }}
+      {{ $hour := int $hourDigits }}
+      {{ $minute := substr . 14 2 }}
+      {{ $period := "AM" }}
+      {{ if ge $hour 12 }}{{ $period = "PM" }}{{ end }}
+      {{ $displayHour := $hour }}
+      {{ if gt $hour 12 }}
+        {{ $displayHour = sub $hour 12 }}
+      {{ else if eq $hour 0 }}
+        {{ $displayHour = 12 }}
+      {{ end }}
+      {{ $displayTime = printf "%d:%s %s CT" $displayHour $minute $period }}
+    {{ end }}
+
+    {{ $params := dict
+      "sessionId" .id
+      "startsAt" .startsAt
+      "displayTime" $displayTime
+      "isServiceSession" .isServiceSession
+      "room" $room
+      "speakers" $sessionSpeakers
+    }}
+
+    {{/* Sessionize descriptions are plain text with bare newlines between
+         paragraphs rather than Markdown's blank-line-separated paragraphs,
+         so every newline is doubled up before Markdown rendering; otherwise
+         CommonMark would collapse them all into a single paragraph. */}}
+    {{ $description := .description | default "" }}
+    {{ $description = replaceRE "\r?\n" "\n\n" $description }}
+    {{ $content := dict
+      "mediaType" "text/markdown"
+      "value" $description
+    }}
+
+    {{ $.AddPage (dict
+      "kind" "page"
+      "path" .id
+      "title" .title
+      "description" (.description | default "")
+      "layout" "session"
+      "params" $params
+      "content" $content
+    ) }}
+
+  {{ end }}
+{{ end }}
