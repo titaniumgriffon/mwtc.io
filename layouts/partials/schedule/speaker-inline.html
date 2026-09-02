@@ -1,5 +1,5 @@
-{{/* Renders one speaker as an inline badge.
-     Expects: a speaker object from site.Data.sessions.speakers */}}
+{{/* Renders one speaker as a small inline badge on a schedule card.
+     Expects: a speaker map from the Sessionize view API. */}}
 <div class="speaker-inline">
   {{ if .profilePicture }}
     <img src="{{ .profilePicture }}" alt="{{ .fullName }}" class="speaker-photo">

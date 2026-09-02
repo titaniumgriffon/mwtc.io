@@ -1,3 +1,4 @@
+baseURL = "https://mwtc.io/"
 languageCode = 'en-us'
 title = "Midwest Tech Conference"
 
@@ -7,8 +8,22 @@ defaultcontentlanguage = "en"
 [build]
 hugo_version = "0.164.0"
 
+[caches]
+  [caches.getresource]
+    maxAge = "10s"
+
 [pagination]
 pagerSize = 20
+
+[mediaTypes."text/calendar"]
+  suffixes = ["ics"]
+
+[outputFormats.CALENDAR]
+  mediaType = "text/calendar"
+  baseName = "schedule"
+  isPlainText = true
+  isHTML = false
+  noUgly = true
 
 [markup.highlight]
 #style = "github-dark"
@@ -33,7 +48,7 @@ style = "monokai"
   hidecolorschemetoggle = false
 
   customSCSS = ['scss/variables.scss', 'scss/logo.scss', 'scss/hero.scss', 'scss/pages.scss']
-  customJS = ['js/countdown.js']
+  customJS = ['js/countdown.js', 'js/schedule.js']
 
 #[[params.links]]
 #  name = "Westminster College, Champ Auditorium"

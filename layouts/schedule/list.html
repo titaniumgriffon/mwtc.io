@@ -3,41 +3,55 @@
 {{ end }}
 {{ define "content" }}
 
-{{ $sessions  := site.Data.sessions.sessions }}
-{{ $speakers  := site.Data.sessions.speakers }}
-
 <section class="schedule-list">
   <h1 class="title schedule-title">Conference Schedule</h1>
 
-  <div class="schedule-announcement">
-    <p><strong>Schedule to be announced.</strong> We are actively looking for speakers for MWTC 2026.</p>
-    <p>Speaker applications are open now. <a href="https://sessionize.com/mwtc-2026/">Submit a talk for consideration.</a></p>
+  {{ $sessions := sort .RegularPages "Params.startsAt" }}
+
+  {{ if $sessions }}
+  <div class="schedule-actions">
+    <button id="schedule-ics-button" type="button" class="ics-button">📅 Add Full Schedule to Calendar</button>
+  </div>
+  {{ with .OutputFormats.Get "calendar" }}
+  {{/* .RelPermalink is used rather than .Permalink so this doesn't depend on
+       baseURL being configured correctly at build time — the webcal:// link
+       needs a real host, so it's built client-side from the browser's own
+       location instead (see assets/js/schedule.js). */}}
+  <p class="schedule-subscribe">
+    <a href="{{ .RelPermalink }}">Subscribe by URL</a>
+    or <a id="schedule-webcal-link" href="{{ .RelPermalink }}">open in your calendar app</a>
+    to get schedule updates automatically — new confirmations and time changes will show up next time your calendar app refreshes.
+  </p>
+  {{ end }}
+  {{ end }}
+
+  <div id="schedule-container" class="schedule-container">
+    {{ range $sessions }}
+      {{ if .Params.isServiceSession }}
+      <div class="schedule-card schedule-card-service" data-session-id="{{ .Params.sessionId }}">
+        <div class="schedule-time">{{ .Params.displayTime }}</div>
+        <h2 class="schedule-session-title">{{ .Title }}</h2>
+      </div>
+      {{ else }}
+      <a class="schedule-card" href="{{ .RelPermalink }}" data-session-id="{{ .Params.sessionId }}">
+        <div class="schedule-time">{{ .Params.displayTime }}</div>
+        <h2 class="schedule-session-title">{{ .Title }}</h2>
+
+        {{ if .Params.speakers }}
+        <div class="schedule-speakers">
+          {{ range .Params.speakers }}
+            {{ partial "schedule/speaker-inline.html" . }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </a>
+      {{ end }}
+    {{ end }}
   </div>
 
-  <div class="schedule-container">
-    {{ range sort $sessions "startsAt" }}
-    {{ if ne .id "schedule-to-be-announced" }}
-    <a class="schedule-card" href="{{ "/schedule/" | relURL }}{{ .id }}">
-      <div class="schedule-time">{{ if .startsAt }}{{ (time .startsAt).Format "3:04 PM" }}{{ else }}To be announced{{ end }}</div>
-      <h2 class="schedule-session-title">{{ .title }}</h2>
-
-      {{ if .subtitle }}
-      <p class="schedule-session-subtitle">{{ .subtitle }}</p>
-      {{ end }}
-
-      {{ if .speakers }}
-      <div class="schedule-speakers">
-        {{ range .speakers }}
-          {{ $speaker := index (where $speakers "id" .) 0 }}
-          {{ if $speaker }}
-            {{ partial "schedule/speaker-inline.html" $speaker }}
-          {{ end }}
-        {{ end }}
-      </div>
-      {{ end }}
-    </a>
-    {{ end }}
-    {{ end }}
+  <div id="schedule-empty" class="schedule-announcement" {{ if $sessions }}hidden{{ end }}>
+    <p><strong>Schedule to be announced.</strong> We are actively looking for speakers for MWTC 2026.</p>
+    <p>Speaker applications are open now. <a href="https://sessionize.com/mwtc-2026/">Submit a talk for consideration.</a></p>
   </div>
 </section>
 

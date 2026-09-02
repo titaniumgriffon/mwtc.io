@@ -498,6 +498,30 @@ body.colorscheme-dark {
   }
 }
 
+.schedule-card-service {
+  padding: 1rem 2rem;
+  border-style: dashed;
+  box-shadow: none;
+  cursor: default;
+
+  .schedule-time {
+    font-size: 1.3rem;
+  }
+
+  .schedule-session-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    opacity: 0.75;
+    margin: 0.3rem 0 0;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--teal-15);
+  }
+}
+
 .schedule-time {
   font-size: 1.6rem;
   font-weight: 700;
@@ -647,10 +671,25 @@ body.colorscheme-dark {
   color: var(--teal);
 }
 
+.session-description-body {
+  white-space: pre-line;
+}
+
+.speaker-card .speaker-initials {
+  width: 10rem;
+  height: 10rem;
+  font-size: 2.4rem;
+}
+
 .session-footer {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--teal-15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .back-link {
@@ -660,6 +699,43 @@ body.colorscheme-dark {
   &:hover,
   &:focus {
     color: var(--teal-hover) !important;
+  }
+}
+
+.schedule-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.schedule-subscribe {
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  opacity: 0.8;
+
+  a {
+    color: var(--teal) !important;
+    font-weight: 600;
+  }
+}
+
+.ics-button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--teal);
+  background: transparent;
+  border: 1px solid var(--teal-30);
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--teal);
+    color: var(--navy);
   }
 }
 
