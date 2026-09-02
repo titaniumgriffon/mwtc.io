@@ -355,7 +355,18 @@
     }
   }
 
+  // webcal:// needs a real host to work as a one-click subscribe link, which
+  // isn't reliably available from Hugo's build-time baseURL, so it's built
+  // from the browser's own location instead — always correct regardless of
+  // what domain is actually serving the page.
+  function initWebcalLink() {
+    var link = document.getElementById('schedule-webcal-link');
+    if (!link) return;
+    link.href = 'webcal://' + window.location.host + link.getAttribute('href');
+  }
+
   hydrateList();
   hydrateDetail();
   initIcsButtons();
+  initWebcalLink();
 })();
