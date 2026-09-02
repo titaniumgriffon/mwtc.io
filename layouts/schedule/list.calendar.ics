@@ -1,0 +1,17 @@
+{{- $lines := slice "BEGIN:VCALENDAR" "VERSION:2.0" "PRODID:-//Midwest Tech Conference//Schedule//EN" "CALSCALE:GREGORIAN" -}}
+{{- range sort .RegularPages "Params.startsAt" -}}
+  {{- if .Params.icsStart -}}
+    {{- $lines = $lines | append "BEGIN:VEVENT" -}}
+    {{- $lines = $lines | append (printf "UID:%s@mwtc.io" .Params.sessionId) -}}
+    {{- $lines = $lines | append (printf "DTSTAMP:%s" (now.UTC.Format "20060102T150405Z")) -}}
+    {{- $lines = $lines | append (printf "DTSTART:%s" .Params.icsStart) -}}
+    {{- $lines = $lines | append (printf "DTEND:%s" (.Params.icsEnd | default .Params.icsStart)) -}}
+    {{- $lines = $lines | append (printf "SUMMARY:%s" (partial "schedule/ics-escape.html" .Title)) -}}
+    {{- $lines = $lines | append (printf "DESCRIPTION:%s" (partial "schedule/ics-escape.html" .Params.descriptionRaw)) -}}
+    {{- $lines = $lines | append (printf "LOCATION:%s" (partial "schedule/ics-escape.html" (.Params.room | default "Stoney Creek Inn, Columbia, MO"))) -}}
+    {{- $lines = $lines | append (printf "URL:%s" .Permalink) -}}
+    {{- $lines = $lines | append "END:VEVENT" -}}
+  {{- end -}}
+{{- end -}}
+{{- $lines = $lines | append "END:VCALENDAR" -}}
+{{ delimit $lines "\r\n" }}

@@ -14,6 +14,16 @@ hugo_version = "0.164.0"
 [pagination]
 pagerSize = 20
 
+[mediaTypes."text/calendar"]
+  suffixes = ["ics"]
+
+[outputFormats.CALENDAR]
+  mediaType = "text/calendar"
+  baseName = "schedule"
+  isPlainText = true
+  isHTML = false
+  noUgly = true
+
 [markup.highlight]
 #style = "github-dark"
 style = "monokai"

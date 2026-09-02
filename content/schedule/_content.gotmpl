@@ -52,10 +52,25 @@
       {{ $displayTime = printf "%d:%s %s CT" $displayHour $minute $period }}
     {{ end }}
 
+    {{/* ICS timestamps (UTC, RFC 5545 form) for the calendar feed and .ics
+         downloads. Columbia, MO conference dates fall in Central Daylight
+         Time (UTC-5), so that offset is appended before converting. */}}
+    {{ $icsStart := "" }}
+    {{ with .startsAt }}
+      {{ $icsStart = (time (printf "%s-05:00" .)).UTC.Format "20060102T150405Z" }}
+    {{ end }}
+    {{ $icsEnd := "" }}
+    {{ with .endsAt }}
+      {{ $icsEnd = (time (printf "%s-05:00" .)).UTC.Format "20060102T150405Z" }}
+    {{ end }}
+
     {{ $params := dict
       "sessionId" .id
       "startsAt" .startsAt
       "displayTime" $displayTime
+      "icsStart" $icsStart
+      "icsEnd" $icsEnd
+      "descriptionRaw" (.description | default "")
       "isServiceSession" .isServiceSession
       "room" $room
       "speakers" $sessionSpeakers

@@ -12,6 +12,17 @@
   <div class="schedule-actions">
     <button id="schedule-ics-button" type="button" class="ics-button">📅 Add Full Schedule to Calendar</button>
   </div>
+  {{ with .OutputFormats.Get "calendar" }}
+  {{/* Hugo gives a text/calendar output format a webcal:// permalink, the
+       right scheme for a one-click "subscribe" link, but it isn't on Go's
+       html/template list of trusted URL schemes so it needs an explicit
+       safeURL to avoid being silently stripped to "#ZgotmplZ". */}}
+  <p class="schedule-subscribe">
+    <a href="{{ replace .Permalink "webcal://" "https://" }}">Subscribe by URL</a>
+    or <a href="{{ .Permalink | safeURL }}">open in your calendar app</a>
+    to get schedule updates automatically — new confirmations and time changes will show up next time your calendar app refreshes.
+  </p>
+  {{ end }}
   {{ end }}
 
   <div id="schedule-container" class="schedule-container">

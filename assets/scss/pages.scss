@@ -705,7 +705,20 @@ body.colorscheme-dark {
 .schedule-actions {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.schedule-subscribe {
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  opacity: 0.8;
+
+  a {
+    color: var(--teal) !important;
+    font-weight: 600;
+  }
 }
 
 .ics-button {
