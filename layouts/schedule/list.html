@@ -3,41 +3,28 @@
 {{ end }}
 {{ define "content" }}
 
-{{ $sessions  := site.Data.sessions.sessions }}
-{{ $speakers  := site.Data.sessions.speakers }}
-
 <section class="schedule-list">
   <h1 class="title schedule-title">Conference Schedule</h1>
 
-  <div class="schedule-announcement">
+  <div id="schedule-skeleton" class="schedule-container" aria-hidden="true">
+    {{ range seq 5 }}
+    <div class="schedule-card schedule-card-skeleton">
+      <div class="skeleton-bar skeleton-time"></div>
+      <div class="skeleton-bar skeleton-title"></div>
+      <div class="skeleton-bar skeleton-subtitle"></div>
+    </div>
+    {{ end }}
+  </div>
+
+  <div id="schedule-container" class="schedule-container"></div>
+
+  <div id="schedule-empty" class="schedule-announcement" hidden>
     <p><strong>Schedule to be announced.</strong> We are actively looking for speakers for MWTC 2026.</p>
     <p>Speaker applications are open now. <a href="https://sessionize.com/mwtc-2026/">Submit a talk for consideration.</a></p>
   </div>
 
-  <div class="schedule-container">
-    {{ range sort $sessions "startsAt" }}
-    {{ if ne .id "schedule-to-be-announced" }}
-    <a class="schedule-card" href="{{ "/schedule/" | relURL }}{{ .id }}">
-      <div class="schedule-time">{{ if .startsAt }}{{ (time .startsAt).Format "3:04 PM" }}{{ else }}To be announced{{ end }}</div>
-      <h2 class="schedule-session-title">{{ .title }}</h2>
-
-      {{ if .subtitle }}
-      <p class="schedule-session-subtitle">{{ .subtitle }}</p>
-      {{ end }}
-
-      {{ if .speakers }}
-      <div class="schedule-speakers">
-        {{ range .speakers }}
-          {{ $speaker := index (where $speakers "id" .) 0 }}
-          {{ if $speaker }}
-            {{ partial "schedule/speaker-inline.html" $speaker }}
-          {{ end }}
-        {{ end }}
-      </div>
-      {{ end }}
-    </a>
-    {{ end }}
-    {{ end }}
+  <div id="schedule-error" class="schedule-announcement" hidden>
+    <p><strong>We couldn't load the schedule right now.</strong> Please refresh the page or check back shortly.</p>
   </div>
 </section>
 
