@@ -498,6 +498,30 @@ body.colorscheme-dark {
   }
 }
 
+.schedule-card-service {
+  padding: 1rem 2rem;
+  border-style: dashed;
+  box-shadow: none;
+  cursor: default;
+
+  .schedule-time {
+    font-size: 1.3rem;
+  }
+
+  .schedule-session-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    opacity: 0.75;
+    margin: 0.3rem 0 0;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--teal-15);
+  }
+}
+
 .schedule-time {
   font-size: 1.6rem;
   font-weight: 700;

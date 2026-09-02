@@ -1,9 +1,19 @@
 (function () {
   var SESSIONIZE_URL = 'https://sessionize.com/api/v2/c2u6te92/view/All';
 
+  // Sessionize returns startsAt/endsAt as a timezone-less wall-clock string
+  // (e.g. "2026-10-07T08:00:00") representing local event time in Columbia,
+  // MO. Parsing it with `new Date()` and formatting with the visitor's
+  // locale would silently reinterpret it in the visitor's own time zone, so
+  // the hour/minute are read directly from the string instead.
   function formatTime(iso) {
     if (!iso) return 'To be announced';
-    return new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    var match = /T(\d{2}):(\d{2})/.exec(iso);
+    if (!match) return 'To be announced';
+    var hour = parseInt(match[1], 10);
+    var period = hour >= 12 ? 'PM' : 'AM';
+    var displayHour = hour % 12 || 12;
+    return displayHour + ':' + match[2] + ' ' + period + ' CT';
   }
 
   function initials(fullName) {
@@ -42,9 +52,12 @@
     });
   }
 
-  function confirmedSessions(data) {
+  // Confirmed talks and confirmed service items (breaks, registration, lunch,
+  // etc.) are both shown, merged into one time-ordered schedule; the caller
+  // tells them apart via session.isServiceSession.
+  function scheduledSessions(data) {
     return (data.sessions || [])
-      .filter(function (s) { return s.isConfirmed && !s.isServiceSession; })
+      .filter(function (s) { return s.isConfirmed; })
       .sort(function (a, b) {
         if (!a.startsAt) return 1;
         if (!b.startsAt) return -1;
@@ -56,6 +69,25 @@
     return (data.speakers || []).find(function (s) { return s.id === id; });
   }
 
+  // Breaks, registration, lunch, etc. — shown inline with the talks but as a
+  // plain, non-clickable divider rather than a session card.
+  function serviceCard(session) {
+    var card = document.createElement('div');
+    card.className = 'schedule-card schedule-card-service';
+
+    var time = document.createElement('div');
+    time.className = 'schedule-time';
+    time.textContent = formatTime(session.startsAt);
+    card.appendChild(time);
+
+    var title = document.createElement('h2');
+    title.className = 'schedule-session-title';
+    title.textContent = session.title;
+    card.appendChild(title);
+
+    return card;
+  }
+
   function renderList() {
     var container = document.getElementById('schedule-container');
     if (!container) return;
@@ -65,7 +97,7 @@
     var error = document.getElementById('schedule-error');
 
     fetchScheduleData().then(function (data) {
-      var sessions = confirmedSessions(data);
+      var sessions = scheduledSessions(data);
       skeleton.hidden = true;
 
       if (!sessions.length) {
@@ -74,6 +106,11 @@
       }
 
       sessions.forEach(function (session) {
+        if (session.isServiceSession) {
+          container.appendChild(serviceCard(session));
+          return;
+        }
+
         var card = document.createElement('a');
         card.className = 'schedule-card';
         card.href = '/schedule/session/?id=' + encodeURIComponent(session.id);
