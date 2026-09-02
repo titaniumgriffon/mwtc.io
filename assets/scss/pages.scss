@@ -377,6 +377,39 @@ body.colorscheme-dark {
   text-align: center;
 }
 
+// ─── Sponsor Page Logo ───────────────────────────────────────────────────────
+
+.sponsor-page-logo {
+  display: inline-block;
+  max-width: 100%;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.6rem;
+  background: #fff;
+
+  img {
+    // A percentage width/max-width here would need to resolve against this
+    // element's own shrink-to-fit size, which some browsers can't do for an
+    // SVG that has no explicit width/height (only a viewBox) — it collapses
+    // to 0 instead of falling back to the image's default intrinsic size.
+    // An absolute width sidesteps that ambiguity.
+    width: 20rem;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.colorscheme-dark .sponsor-page-logo {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .sponsor-page-logo {
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
 .sponsor-card-tier {
   display: block;
   text-align: center;

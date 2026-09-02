@@ -1,1 +1,7 @@
-{{ partial "logo.html" (dict "Page" .Page "Params" (dict "name" (.Get "name") "width" (.Get "width"))) }}
+{{/* Wrapped in a light box so logos with dark or transparent artwork (like
+     Veterans United's SVG) stay visible against the sponsor page's dark-mode
+     background, matching the treatment sponsor-card-logo already gives
+     logos on the sponsors list. */}}
+<div class="sponsor-page-logo">
+  {{ partial "logo.html" (dict "Page" .Page "Params" (dict "name" (.Get "name") "width" (.Get "width"))) }}
+</div>
