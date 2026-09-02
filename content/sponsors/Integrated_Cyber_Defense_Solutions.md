@@ -5,6 +5,7 @@ title = 'Integrated Cyber Defense Solutions'
 logo = "/images/icds.png"
 logo_alt = "Integrated Cyber Defense Solutions Logo"
 level = 'Platinum'
+externalLink = "https://icds.us"
 +++
 
 {{< logo >}}

@@ -19,6 +19,9 @@
           <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image"/>
         {{ end }}
         {{ .Content }}
+        {{ with .Params.externalLink }}
+          <p class="sponsor-website-link"><a href="{{ . }}">Visit website &rarr;</a></p>
+        {{ end }}
       </div>
 
 
