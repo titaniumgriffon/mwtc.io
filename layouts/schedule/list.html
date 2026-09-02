@@ -8,6 +8,12 @@
 
   {{ $sessions := sort .RegularPages "Params.startsAt" }}
 
+  {{ if $sessions }}
+  <div class="schedule-actions">
+    <button id="schedule-ics-button" type="button" class="ics-button">📅 Add Full Schedule to Calendar</button>
+  </div>
+  {{ end }}
+
   <div id="schedule-container" class="schedule-container">
     {{ range $sessions }}
       {{ if .Params.isServiceSession }}

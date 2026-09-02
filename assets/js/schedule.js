@@ -75,10 +75,44 @@
     return card;
   }
 
+  // Caching the raw Sessionize response for a couple minutes means clicking
+  // from the schedule list into a session detail page reuses the fetch that
+  // just ran, instead of the detail page's hydration re-requesting the same
+  // payload immediately after.
+  var CACHE_KEY = 'mwtc-sessionize-cache-v1';
+  var CACHE_TTL_MS = 2 * 60 * 1000;
+
+  function readCachedScheduleData() {
+    try {
+      var raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      var cached = JSON.parse(raw);
+      if (Date.now() - cached.cachedAt > CACHE_TTL_MS) return null;
+      return cached.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeCachedScheduleData(data) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ cachedAt: Date.now(), data: data }));
+    } catch (e) {
+      // sessionStorage unavailable (private browsing, quota) — fine, just
+      // means the next call refetches instead of reading a cached copy.
+    }
+  }
+
   function fetchScheduleData() {
+    var cached = readCachedScheduleData();
+    if (cached) return Promise.resolve(cached);
+
     return fetch(SESSIONIZE_URL).then(function (res) {
       if (!res.ok) throw new Error('Sessionize request failed: ' + res.status);
       return res.json();
+    }).then(function (data) {
+      writeCachedScheduleData(data);
+      return data;
     });
   }
 
@@ -229,6 +263,99 @@
     });
   }
 
+  // ICS export. Columbia, MO conference dates fall in Central Daylight Time
+  // (UTC-5), so an explicit "-05:00" is appended to Sessionize's
+  // timezone-less wall-clock strings before converting to the UTC form ICS
+  // requires — this is the one place an offset is safe to assume rather
+  // than reading the string directly, since we need a real absolute instant.
+  function toIcsUtc(iso) {
+    if (!iso) return null;
+    return new Date(iso + '-05:00').toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  }
+
+  function nowIcsUtc() {
+    return new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  }
+
+  function icsEscape(text) {
+    return String(text || '')
+      .replace(/\\/g, '\\\\')
+      .replace(/;/g, '\\;')
+      .replace(/,/g, '\\,')
+      .replace(/\r\n|\n|\r/g, '\\n');
+  }
+
+  function icsEventLines(session, roomName) {
+    var dtStart = toIcsUtc(session.startsAt);
+    if (!dtStart) return [];
+    return [
+      'BEGIN:VEVENT',
+      'UID:' + session.id + '@mwtc.io',
+      'DTSTAMP:' + nowIcsUtc(),
+      'DTSTART:' + dtStart,
+      'DTEND:' + (toIcsUtc(session.endsAt) || dtStart),
+      'SUMMARY:' + icsEscape(session.title),
+      'DESCRIPTION:' + icsEscape(session.description),
+      'LOCATION:' + icsEscape(roomName || 'Stoney Creek Inn, Columbia, MO'),
+      'URL:' + window.location.origin + '/schedule/' + encodeURIComponent(session.id) + '/',
+      'END:VEVENT'
+    ];
+  }
+
+  function buildIcs(eventLines) {
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Midwest Tech Conference//Schedule//EN', 'CALSCALE:GREGORIAN']
+      .concat(eventLines)
+      .concat(['END:VCALENDAR'])
+      .join('\r\n');
+  }
+
+  function downloadIcs(filename, content) {
+    var blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function icsFilename(title) {
+    var slug = String(title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return (slug || 'session') + '.ics';
+  }
+
+  function initIcsButtons() {
+    var sessionButton = document.getElementById('session-ics-button');
+    if (sessionButton) {
+      sessionButton.addEventListener('click', function () {
+        var id = document.getElementById('session-detail').dataset.sessionId;
+        fetchScheduleData().then(function (data) {
+          var session = (data.sessions || []).find(function (s) { return s.id === id; });
+          if (!session) return;
+          var room = (data.rooms || []).find(function (r) { return r.id === session.roomId; });
+          downloadIcs(icsFilename(session.title), buildIcs(icsEventLines(session, room && room.name)));
+        });
+      });
+    }
+
+    var scheduleButton = document.getElementById('schedule-ics-button');
+    if (scheduleButton) {
+      scheduleButton.addEventListener('click', function () {
+        fetchScheduleData().then(function (data) {
+          var lines = [];
+          scheduledSessions(data).forEach(function (session) {
+            var room = (data.rooms || []).find(function (r) { return r.id === session.roomId; });
+            lines = lines.concat(icsEventLines(session, room && room.name));
+          });
+          downloadIcs('mwtc-2026-schedule.ics', buildIcs(lines));
+        });
+      });
+    }
+  }
+
   hydrateList();
   hydrateDetail();
+  initIcsButtons();
 })();

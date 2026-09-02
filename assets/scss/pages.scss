@@ -685,6 +685,11 @@ body.colorscheme-dark {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--teal-15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .back-link {
@@ -694,6 +699,30 @@ body.colorscheme-dark {
   &:hover,
   &:focus {
     color: var(--teal-hover) !important;
+  }
+}
+
+.schedule-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.ics-button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--teal);
+  background: transparent;
+  border: 1px solid var(--teal-30);
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--teal);
+    color: var(--navy);
   }
 }
 
