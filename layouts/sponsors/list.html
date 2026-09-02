@@ -3,7 +3,7 @@
 <section class="container list">
     <header>
         <h1 class="title">
-            <a class="title-link" href="{{ .Permalink | safeURL }}">
+            <a class="title-link" href="{{ .RelPermalink }}">
                 {{ title (i18n (lower .Title)) | default .Title }}
             </a>
         </h1>

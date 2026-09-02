@@ -9,7 +9,7 @@
     {{- $lines = $lines | append (printf "SUMMARY:%s" (partial "schedule/ics-escape.html" .Title)) -}}
     {{- $lines = $lines | append (printf "DESCRIPTION:%s" (partial "schedule/ics-escape.html" .Params.descriptionRaw)) -}}
     {{- $lines = $lines | append (printf "LOCATION:%s" (partial "schedule/ics-escape.html" (.Params.room | default "Stoney Creek Inn, Columbia, MO"))) -}}
-    {{- $lines = $lines | append (printf "URL:%s" .Permalink) -}}
+    {{- $lines = $lines | append (printf "URL:https://mwtc.io%s" .RelPermalink) -}}
     {{- $lines = $lines | append "END:VEVENT" -}}
   {{- end -}}
 {{- end -}}
