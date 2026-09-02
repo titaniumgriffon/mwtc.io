@@ -52,12 +52,14 @@
     });
   }
 
-  // Confirmed talks and confirmed service items (breaks, registration, lunch,
-  // etc.) are both shown, merged into one time-ordered schedule; the caller
-  // tells them apart via session.isServiceSession.
+  // Confirmed talks and all service items (breaks, registration, lunch,
+  // etc.) are shown, merged into one time-ordered schedule; the caller tells
+  // them apart via session.isServiceSession. Service items skip the
+  // isConfirmed check because they're logistics set by organizers, not
+  // speaker-dependent content Sessionize needs to confirm.
   function scheduledSessions(data) {
     return (data.sessions || [])
-      .filter(function (s) { return s.isConfirmed; })
+      .filter(function (s) { return s.isConfirmed || s.isServiceSession; })
       .sort(function (a, b) {
         if (!a.startsAt) return 1;
         if (!b.startsAt) return -1;
