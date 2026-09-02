@@ -1,0 +1,13 @@
+{{/*
+  Project override of the theme's (empty) head/extensions.html.
+  The theme forces every stylesheet it links to media="screen", so a
+  print-only stylesheet needs its own <link media="print"> here.
+*/}}
+{{ if hugo.IsServer }}
+  {{ $cssOpts := (dict "enableSourceMap" true ) }}
+  {{ $styles := resources.Get "scss/print.scss" | toCSS $cssOpts }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="print">
+{{ else }}
+  {{ $styles := resources.Get "scss/print.scss" | toCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="print" />
+{{ end }}
