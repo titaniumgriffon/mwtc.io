@@ -1,5 +1,5 @@
 <li class="sponsor-card">
-  <a class="sponsor-card-link" href="{{ .Params.externalLink | default .RelPermalink }}">
+  <a class="sponsor-card-link" href="{{ .RelPermalink }}">
     <div class="sponsor-card-logo">
       {{ with .Params.logo }}
         <img src="{{ . | relURL }}" alt="{{ $.Params.logo_alt | default $.Title }}" loading="lazy">
