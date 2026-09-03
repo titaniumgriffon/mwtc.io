@@ -37,7 +37,8 @@ style = "monokai"
   eventLocation = "Stoney Creek Inn, Columbia, MO"
   description = "A tech conference for the people"
   keywords = "MWTC, Midwest, Tech, Conference, Technical"
-  logo = "images/MWTC_dark.png"
+  logo = "images/MWTC_dark.webp"
+  images = ["images/MWTC_light.webp"]
   faviconSVG = "/images/favicon.svg"
   favicon_32 = "/images/favicon-32x32.png"
   favicon_16 = "/images/favicon-16x16.png"
@@ -90,7 +91,7 @@ style = "monokai"
 
 # Menu links
 [[menu.main]]
-  name = "Tickets on sale July 1st!"
+  name = "Get Tickets"
   weight = 1
   url = "https://mwtc2026.eventbrite.com"
   target = "_blank"
