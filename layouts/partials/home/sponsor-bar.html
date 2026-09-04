@@ -5,7 +5,9 @@
     <p class="sponsor-bar-label">Platinum Sponsors</p>
     <div class="sponsor-bar-logos">
       {{ range $platinumSponsors }}
-        {{ partial "logo.html" (dict "Page" . "Params" (dict "width" "180")) }}
+        <div class="sponsor-bar-logo-box">
+          {{ partial "logo.html" (dict "Page" . "Params" (dict "width" "180")) }}
+        </div>
       {{ end }}
     </div>
   </div>
