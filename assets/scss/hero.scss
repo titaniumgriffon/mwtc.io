@@ -276,7 +276,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
 
   a {
     display: inline-flex;
@@ -293,4 +293,16 @@
       opacity: 1;
     }
   }
+}
+
+// The bar's background is always dark navy regardless of color scheme, so
+// sponsor logos with dark or transparent artwork (like ICDS's) need a fixed
+// light backing to stay visible — no colorscheme-dark variant needed here.
+.sponsor-bar-logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-radius: 0.6rem;
+  background: #fff;
 }
