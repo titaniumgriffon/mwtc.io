@@ -2,7 +2,7 @@
 draft = false
 date = 2026-09-22T00:00:00Z
 title = 'Nighteagle Security LLC'
-logo = "/images/Nighteagle_Security.jpg"
+logo = "/images/Nighteagle_Security.svg"
 logo_alt = "Nighteagle Security LLC logo"
 level = 'Silver'
 externalLink = "https://nighteaglesec.blog/"
