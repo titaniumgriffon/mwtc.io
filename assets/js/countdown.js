@@ -1,6 +1,6 @@
 (function () {
-  // October 8, 2026 at 8:00 AM Central Daylight Time (UTC-5)
-  var target = new Date('2026-10-08T08:00:00-05:00');
+  // October 7, 2026 at 8:00 AM Central Daylight Time (UTC-5)
+  var target = new Date('2026-10-07T08:00:00-05:00');
 
   function pad(n) {
     return String(n).padStart(2, '0');
